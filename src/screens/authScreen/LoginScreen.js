@@ -1,14 +1,22 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import React from "react";
+import { View, Text, Button } from "react-native";
 
-const LoginScreen = () => {
+const LoginScreen = ({ navigation }) => {
   return (
-    <View>
-      <Text>LoginScreen</Text>
+    <View style={{flex:1,justifyContent:"center",alignItems:"center"}}>
+      <Text>Login Screen</Text>
+
+      <Button
+        title="Login"
+        onPress={() => navigation.replace("HomeScreen")}
+      />
+
+      <Button
+        title="Go to Register"
+        onPress={() => navigation.navigate("RegisterScreen")}
+      />
     </View>
-  )
-}
+  );
+};
 
-export default LoginScreen
-
-const styles = StyleSheet.create({})
+export default LoginScreen;

@@ -1,14 +1,14 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-const StackNavigator = () => {
+const ListScreen = () => {
   return (
     <View>
-      <Text>StackNavigator</Text>
+      <Text>ListScreen</Text>
     </View>
   )
 }
 
-export default StackNavigator
+export default ListScreen
 
 const styles = StyleSheet.create({})

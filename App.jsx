@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import Logo from "./src/assets/logo/Logo.svg"
 
 const App = () => {
   return (
@@ -11,6 +12,8 @@ const App = () => {
       <Text style={{fontSize:20}}>
         Bold Text
       </Text>
+
+       <Logo width={200} height={100} />
     </View>
   )
 }

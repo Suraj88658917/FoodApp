@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
-import { View, Text } from "react-native";
+import { View, Image, StyleSheet } from "react-native";
+import Logo from "../../../src/assets/logo/Logo.svg";
+
 
 const SplashScreen = ({ navigation }) => {
 
@@ -10,10 +12,20 @@ const SplashScreen = ({ navigation }) => {
   }, []);
 
   return (
-    <View style={{flex:1,justifyContent:"center",alignItems:"center"}}>
-      <Text>Splash Screen</Text>
+    <View style={styles.container}>
+       <Logo width={121.13} height={58.88}/>
     </View>
   );
 };
 
 export default SplashScreen;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent:"center",
+    alignItems:"center"
+
+  },
+
+});

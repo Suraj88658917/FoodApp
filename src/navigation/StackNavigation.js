@@ -5,7 +5,8 @@ import SplashScreen from "../screens/authScreen/SplashScreen";
 import OnboardingScreen from "../screens/authScreen/OnboardingScreen";
 import LoginScreen from  "../screens/authScreen/LoginScreen";
 import RegisterScreen from "../screens/authScreen/RegisterSceen";
-import TabNavigation from "../navigation/TabNavigation";
+
+import DrawerNavigation from "./DrawerNavigation";
 
 const Stack = createNativeStackNavigator();
 
@@ -17,7 +18,7 @@ const StackNavigation = () => {
       <Stack.Screen name="OnboardingScreen" component={OnboardingScreen}/>
       <Stack.Screen name="LoginScreen" component={LoginScreen}/>
       <Stack.Screen  name="RegisterScreen" component={RegisterScreen}/>
-      <Stack.Screen name="HomeScreen" component={TabNavigation}/>
+      <Stack.Screen name="HomeScreen" component={DrawerNavigation}/>
 
     </Stack.Navigator>
   );

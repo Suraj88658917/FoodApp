@@ -4,7 +4,13 @@ import React from 'react'
 const App = () => {
   return (
     <View style={styles.container}>
-      <Text>App</Text>
+      <Text style={{fontSize:20 , fontFamily:"Sen-Bold"}}>
+        this is App
+      </Text>
+
+      <Text style={{fontSize:20}}>
+        Bold Text
+      </Text>
     </View>
   )
 }
@@ -17,5 +23,6 @@ const styles = StyleSheet.create({
     justifyContent:"center",
     alignItems:"center",
     backgroundColor:"pink"
-  }
+  },
+ 
 })

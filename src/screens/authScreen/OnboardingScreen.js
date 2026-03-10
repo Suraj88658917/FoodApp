@@ -1,17 +1,251 @@
-import React from "react";
-import { View, Text, Button } from "react-native";
+import React, { useRef, useState } from "react";
+import { View, Text, FlatList, StyleSheet, Dimensions, TouchableOpacity, Image, } from "react-native";
 
-const OnboardingScreen = ({ navigation }) => {
+import { storage } from "../../storage/storage";
+
+const { width } = Dimensions.get("window");
+
+const data = [
+  {
+    id: "1",
+    image: require("../../assets/image/Rectangle.svg"),
+    title: "All your favorites",
+    subtitle: "Get all your loved foods in one place",
+  },
+  {
+    id: "2",
+    image: require("../../assets/image/Rectangle.svg"),
+    title: "All your favorites",
+    subtitle: "Get all your loved foods in one place",
+  },
+  {
+    id: "3",
+    image: require("../../assets/image/Rectangle.svg"),
+    title: "Order from chosen chef",
+    subtitle: "Get all your loved foods in one place",
+  },
+  {
+    id: "4",
+    image: require("../../assets/image/Rectangle.svg"),
+    title: "Free delivery offers",
+    subtitle: "Get all your loved foods in one place",
+  },
+];
+
+const Onboarding = ({ navigation }) => {
+
+  const [index, setIndex] = useState(0);
+  const flatListRef = useRef();
+
+  const SkipOnbording = () => {
+
+    storage.set("OnbordingScreen", true);
+
+    console.log("All Keys:", storage.getAllKeys());
+    console.log("Onboarding Value:", storage.getBoolean("OnbordingScreen"));
+
+    navigation.replace("LoginScreen");
+
+
+  };
+
+  const onScrollEnd = (e) => {
+
+    const slideIndex = Math.round(
+      e.nativeEvent.contentOffset.x / width
+    );
+
+    setIndex(slideIndex);
+
+  };
+
+  const onNext = () => {
+
+    if (index < data.length - 1) {
+
+      flatListRef.current.scrollToIndex({
+        index: index + 1,
+        animated: true,
+      });
+
+    } else {
+
+      SkipOnbording();
+
+    }
+
+  };
+
   return (
-    <View style={{flex:1,justifyContent:"center",alignItems:"center"}}>
-      <Text>Onboarding Screen</Text>
 
-      <Button
-        title="Go to Login"
-        onPress={() => navigation.navigate("LoginScreen")}
+    <View style={styles.container}>
+
+      <FlatList
+        ref={flatListRef}
+        data={data}
+        horizontal
+        pagingEnabled
+        showsHorizontalScrollIndicator={false}
+        keyExtractor={(item) => item.id}
+        onMomentumScrollEnd={onScrollEnd}
+        renderItem={({ item }) => (
+          <View style={styles.slide}>
+
+            <Image source={item.image} style={styles.image} />
+
+            <Text style={styles.title}>{item.title}</Text>
+
+            <Text style={styles.desc}>{item.subtitle}</Text>
+
+          </View>
+        )}
       />
+
+      <View style={styles.pagination}>
+        {data.map((_, i) => (
+          <View
+            key={i}
+            style={[
+              styles.dot,
+              i === index && styles.activeDot,
+            ]}
+          />
+        ))}
+      </View>
+
+      <View style={styles.buttonContainer}>
+
+        {index === data.length - 1 ? (
+
+          <View style={styles.buttonContainer1}>
+            <TouchableOpacity style={styles.button1} onPress={SkipOnbording}>
+              <Text style={styles.buttonText1}>Get Started</Text>
+            </TouchableOpacity>
+          </View>
+
+        ) : (
+
+          <>
+            <TouchableOpacity style={styles.button} onPress={onNext}>
+              <Text style={styles.buttonText}>Next</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={SkipOnbording}>
+              <Text style={styles.skip}>Skip</Text>
+            </TouchableOpacity>
+          </>
+
+        )}
+
+      </View>
+
     </View>
+
   );
+
 };
 
-export default OnboardingScreen;
+export default Onboarding;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+
+  },
+
+  slide: {
+    width,
+    alignItems: "center",
+    marginTop: 114
+  },
+
+  image: {
+    width: 240,
+    height: 292,
+    marginBottom: 50,
+    backgroundColor: "#98A8B8",
+    borderRadius: 12,
+  },
+
+  title: {
+    fontSize: 21,
+    textAlign: "center",
+    marginBottom: 17,
+    fontFamily: "Sen-Bold",
+    color: "#000000",
+  },
+
+  desc: {
+    fontSize: 14,
+    textAlign: "center",
+    color: "#32343E",
+    lineHeight: 20,
+    fontFamily: "Sen-Regular",
+  },
+
+  pagination: {
+    flexDirection: "row",
+    justifyContent: "center",
+    position: "absolute",
+    bottom: 250,
+    width: "100%",
+  },
+
+  dot: {
+    width: 8,
+    height: 8,
+    borderRadius: 4,
+    backgroundColor: "#ebd399",
+    marginHorizontal: 4,
+  },
+
+  activeDot: {
+    backgroundColor: "#FF7622",
+    width: 8,
+  },
+
+  buttonContainer: {
+    position: "absolute",
+    bottom: 100,
+    alignItems: "center",
+    width: "100%",
+  },
+
+  buttonContainer1: {
+    position: "absolute",
+    bottom: 40,
+    alignItems: "center",
+    width: "100%",
+  },
+
+  skip: {
+    fontSize: 16,
+    color: "#a39595",
+    marginTop: 20,
+    fontFamily: "Sen-Regular",
+  },
+
+  button: {
+    backgroundColor: "#FF7622",
+    paddingVertical: 16,
+    paddingHorizontal: 130,
+    borderRadius: 12,
+  },
+  button1: {
+    backgroundColor: "#FF7622",
+    paddingVertical: 16,
+    paddingHorizontal: 110,
+    borderRadius: 12,
+  },
+
+  buttonText: {
+    color: "#fff",
+    fontSize: 14,
+    fontFamily: "Sen-Medium",
+  },
+  buttonText1: {
+    color: "#fff",
+    fontSize: 14,
+    fontFamily: "Sen-Medium",
+  },
+});

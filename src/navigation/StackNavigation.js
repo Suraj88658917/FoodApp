@@ -7,6 +7,8 @@ import LoginScreen from  "../screens/authScreen/LoginScreen";
 import RegisterScreen from "../screens/authScreen/RegisterSceen";
 import ForgotPasswordScreen from "../screens/authScreen/ForgotPasswordScreen";
 import DrawerNavigation from "./DrawerNavigation";
+import VerificationScreen from "../screens/authScreen/VerificationScreen";
+import LocationScreen from "../screens/authScreen/LocationScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -19,6 +21,8 @@ const StackNavigation = () => {
       <Stack.Screen name="LoginScreen" component={LoginScreen}/>
       <Stack.Screen  name="ForgotPasswordScreen" component={ForgotPasswordScreen}/>
       <Stack.Screen  name="RegisterScreen" component={RegisterScreen}/>
+       <Stack.Screen  name="VerificationScreen" component={VerificationScreen}/>
+       <Stack.Screen  name="LocationScreen" component={LocationScreen}/>
       <Stack.Screen name="HomeScreen" component={DrawerNavigation}/>
 
     </Stack.Navigator>

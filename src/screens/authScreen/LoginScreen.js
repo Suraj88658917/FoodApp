@@ -6,6 +6,7 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import Facebook from "../../assets/image/Facebook.svg";
 import Twitter from "../../assets/image/twitter.svg";
 import Apple from "../../assets/image/apple.svg";
+import { storage } from "../../storage/storage";
 
 const LoginScreen = ({ navigation }) => {
 
@@ -20,6 +21,14 @@ const LoginScreen = ({ navigation }) => {
       alert("Please enter email and password");
       return;
     }
+
+      // Save data in MMKV
+    storage.set("isLoggedIn", true);
+    storage.set("userEmail", email);
+
+    // Log saved data
+    console.log("Login Saved:", storage.getBoolean("isLoggedIn"));
+    console.log("User Email:", storage.getString("userEmail"));
 
     navigation.replace("HomeScreen");
   };
@@ -65,7 +74,7 @@ const LoginScreen = ({ navigation }) => {
           <View style={styles.passwordContainer}>
 
             <TextInput
-              placeholder="* * * * * * * *"
+              placeholder="* * * * * * * * * *"
               placeholderTextColor="#7E8A97"
               value={password}
               onChangeText={setPassword}

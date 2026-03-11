@@ -8,24 +8,38 @@ const SplashScreen = ({ navigation }) => {
 
   useEffect(() => {
 
-    const checkOnboarding = () => {
+    const checkAppFlow = () => {
 
-      const value = storage.getBoolean("OnbordingScreen");
-      console.log("Splash Value:", value);
+      const onboarding = storage.getBoolean("OnbordingScreen");
+      const loginStatus = storage.getBoolean("isLoggedIn");
+
+      console.log("Onboarding Status:", onboarding);
+      console.log("Login Status:", loginStatus);
 
       setTimeout(() => {
 
-        if (storage.getBoolean("OnbordingScreen")) {
-          navigation.replace("LoginScreen");
-        } else {
+        if (!onboarding) {
+
+          console.log("Navigate → OnbordingScreen");
           navigation.replace("OnbordingScreen");
+
+        } else if (loginStatus) {
+
+          console.log("Navigate → HomeScreen");
+          navigation.replace("HomeScreen");
+
+        } else {
+
+          console.log("Navigate → LoginScreen");
+          navigation.replace("LoginScreen");
+
         }
 
       }, 2000);
 
     };
 
-    checkOnboarding();
+    checkAppFlow();
 
   }, []);
 

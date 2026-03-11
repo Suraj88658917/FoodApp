@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import React from 'react'
-import Rectangle from "../../assets/image/Rectangle.svg"
+import Rectangle from "../../assets/image/Rectangle2.svg"
 import MapPin from "../../assets/image/Map.svg"
 
 import { storage } from "../../storage/storage"

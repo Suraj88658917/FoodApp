@@ -10,18 +10,18 @@ const SplashScreen = ({ navigation }) => {
 
     const checkAppFlow = () => {
 
-      const onboarding = storage.getBoolean("OnbordingScreen");
+      const OnboardingScreen = storage.getBoolean("OnboardingScreen");
       const loginStatus = storage.getBoolean("isLoggedIn");
 
-      console.log("Onboarding Status:", onboarding);
+      console.log("Onboarding Status:", OnboardingScreen);
       console.log("Login Status:", loginStatus);
 
       setTimeout(() => {
 
-        if (!onboarding) {
+        if (!OnboardingScreen) {
 
-          console.log("Navigate → OnbordingScreen");
-          navigation.replace("OnbordingScreen");
+          console.log("Navigate → OnboardingScreen");
+          navigation.replace("OnboardingScreen");
 
         } else if (loginStatus) {
 

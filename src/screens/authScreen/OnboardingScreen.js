@@ -39,10 +39,10 @@ const Onboarding = ({ navigation }) => {
 
   const SkipOnbording = () => {
 
-    storage.set("OnbordingScreen", true);
+    storage.set("OnboardingScreen", true);
 
     console.log("All Keys:", storage.getAllKeys());
-    console.log("Onboarding Value:", storage.getBoolean("OnbordingScreen"));
+    console.log("Onboarding Value:", storage.getBoolean("OnboardingScreen"));
 
     navigation.replace("LoginScreen");
 

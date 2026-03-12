@@ -9,6 +9,10 @@ import ForgotPasswordScreen from "../screens/authScreen/ForgotPasswordScreen";
 import DrawerNavigation from "./DrawerNavigation";
 import VerificationScreen from "../screens/authScreen/VerificationScreen";
 import LocationScreen from "../screens/authScreen/LocationScreen";
+import SearchScreen from "../screens/appScreen/SearchScreen";
+import BurgerScreen from "../screens/appScreen/BurgerScreen";
+import SandwichScreen from "../screens/appScreen/SandwichScreen.js";
+import PizzaScreen from "../screens/appScreen/PizzaScreen.js";
 
 const Stack = createNativeStackNavigator();
 
@@ -23,6 +27,10 @@ const StackNavigation = () => {
       <Stack.Screen  name="RegisterScreen" component={RegisterScreen}/>
        <Stack.Screen  name="VerificationScreen" component={VerificationScreen}/>
        <Stack.Screen  name="LocationScreen" component={LocationScreen}/>
+        <Stack.Screen  name="SearchScreen" component={SearchScreen}/>
+        <Stack.Screen  name="BurgerScreen" component={BurgerScreen}/>
+         <Stack.Screen  name="SandwichScreen" component={SandwichScreen}/>
+         <Stack.Screen  name="PizzaScreen" component={PizzaScreen}/>
       <Stack.Screen name="HomeScreen" component={DrawerNavigation}/>
 
     </Stack.Navigator>

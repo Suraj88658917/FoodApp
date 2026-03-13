@@ -386,7 +386,7 @@ const styles = StyleSheet.create({
 
   textContainer: {
     position: "absolute",
-    top: 80,
+    top: 90,
     alignItems: "center",
     zIndex: 2
   },

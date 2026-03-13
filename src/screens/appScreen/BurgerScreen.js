@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, TouchableOpacity, Modal  , FlatList} from 'react-native'
+import { StyleSheet, Text, View, TouchableOpacity, Modal, ScrollView } from 'react-native'
 import React, { useState } from 'react'
 
 import Back1 from "../../assets/image/back.svg";
@@ -8,7 +8,10 @@ import Polygon2 from "../../assets/image/Polygon1.svg";
 import Box from "../../assets/image/Box.svg";
 import WhiteBox from "../../assets/image/WhiteBox1.svg";
 import Oadd from "../../assets/image/Oadd.svg";
-
+import Squarlarge from "../../assets/image/Squarlarge.svg";
+import Rate from "../../assets/image/Rate.svg";
+import Free from "../../assets/image/Free.svg";
+import Min from "../../assets/image/Min.svg";
 
 const foodData = [
   { id: "1", title: "Burger Bistro", place: "Rose Garden", price: "$40" },
@@ -17,18 +20,25 @@ const foodData = [
   { id: "4", title: "Bullseye Burger", place: "Kabab Restourant", price: "$95" },
 ];
 
-const renderItem = ({ item }) => {
-  return (
-    <TouchableOpacity>
+const restaurants = [
+  { id: "1", title: "Tasty Treat Gallery" },
+  { id: "2", title: "Food Palace" },
+  { id: "3", title: "Rose Garden Restaurant", },
+  { id: "4", title: "Food Palace" },
+];
+
+const BurgerScreen = ({ navigation }) => {
+
+  const [modalVisible, setModalVisible] = useState(false);
+
+  const renderItem = (item) => (
+    <TouchableOpacity onPress={() => navigation.navigate("FoodDetailsScreen")}
+     key={item.id}>
       <View style={styles.card1}>
 
         <Box width={122} height={84} style={styles.box} />
 
-        <WhiteBox
-          width={193}
-          height={190}
-          style={styles.whiteBox}
-        />
+        <WhiteBox width={193} height={190} style={styles.whiteBox} />
 
         <View style={styles.textContainer}>
           <Text style={styles.foodTitle}>{item.title}</Text>
@@ -43,22 +53,38 @@ const renderItem = ({ item }) => {
           </TouchableOpacity>
         </View>
 
-
       </View>
     </TouchableOpacity>
   );
-};
 
-const BurgerScreen = ({ navigation }) => {
+  const renderRestaurant = (item) => (
+    <View key={item.id} style={styles.restaurantCard}>
+      <TouchableOpacity  onPress={() => navigation.navigate("RestaurantScreen")}
+      >
 
-  const [modalVisible, setModalVisible] = useState(false);
+        <Squarlarge width={350} height={170} />
+
+        <View style={{ marginTop: 5  }}>
+          <Text style={styles.resTitle}>{item.title}</Text>
+          <View style={styles.iconRow}>
+            <Rate width={47} height={20} />
+            <Free width={62} height={20} />
+            <Min width={74} height={20} />
+          </View>
+
+        </View>
+
+      </TouchableOpacity>
+    </View>
+  );
 
   return (
     <View style={styles.container}>
 
+
       <View style={styles.header}>
 
-        <View style={{ width: 78, justifyContent: "center", alignItems: "center", }}>
+        <View style={{ width: 78, justifyContent: "center", alignItems: "center" }}>
           <TouchableOpacity
             style={styles.backButton}
             onPress={() => navigation.goBack()}
@@ -76,9 +102,7 @@ const BurgerScreen = ({ navigation }) => {
             <Text style={styles.title}>BURGER</Text>
           </View>
 
-          <View style={{ justifyContent: "center" }}>
-            <Polygon2 size={20} style={{ marginLeft: 7 }} />
-          </View>
+          <Polygon2 style={{ marginLeft: 7 }} />
 
         </TouchableOpacity>
 
@@ -96,16 +120,10 @@ const BurgerScreen = ({ navigation }) => {
 
       </View>
 
-      <Modal
-        visible={modalVisible}
-        transparent={true}
-        animationType="fade"
-      >
 
-        <TouchableOpacity
-          style={styles.modalOverlay}
-          onPress={() => setModalVisible(false)}
-        >
+      <Modal visible={modalVisible} transparent animationType="fade">
+
+        <View style={styles.modalOverlay}>
 
           <View style={styles.modalBox}>
 
@@ -114,8 +132,7 @@ const BurgerScreen = ({ navigation }) => {
               onPress={() => {
                 setModalVisible(false)
                 navigation.navigate("BurgerScreen")
-              }}
-            >
+              }}>
               <Text style={styles.modalText}>Burger</Text>
             </TouchableOpacity>
 
@@ -124,8 +141,7 @@ const BurgerScreen = ({ navigation }) => {
               onPress={() => {
                 setModalVisible(false)
                 navigation.navigate("SandwichScreen")
-              }}
-            >
+              }}>
               <Text style={styles.modalText}>Sandwich</Text>
             </TouchableOpacity>
 
@@ -134,33 +150,39 @@ const BurgerScreen = ({ navigation }) => {
               onPress={() => {
                 setModalVisible(false)
                 navigation.navigate("PizzaScreen")
-              }}
-            >
+              }}>
               <Text style={styles.modalText}>Pizza</Text>
             </TouchableOpacity>
 
           </View>
 
-        </TouchableOpacity>
+        </View>
 
       </Modal>
 
-      <View style={{ paddingHorizontal: 20, height: 30, justifyContent: "flex-end" }}>
-        <Text style={{ fontSize: 20, fontFamily: "Sen-Regular" }}>Popular Burgers</Text>
-      </View>
 
-      <View>
-        <FlatList
-          data={foodData}
-          keyExtractor={(item) => item.id}
-          renderItem={renderItem}
-          numColumns={2}
-          columnWrapperStyle={{ justifyContent: "space-between" , padding:10 }}
-          showsVerticalScrollIndicator={false}
-        />
-      </View>
+      <ScrollView showsVerticalScrollIndicator={false}>
+
+        <View style={{ paddingHorizontal: 20, marginTop: 10 }}>
+          <Text style={{ fontSize: 20, fontFamily: "Sen-Regular" }}>
+            Popular Burgers
+          </Text>
+        </View>
 
 
+        <View style={styles.grid}>
+          {foodData.map(renderItem)}
+        </View>
+
+        <View style={{ paddingHorizontal: 20, marginTop: 2 }}>
+          <Text style={{ fontSize: 20, fontFamily: "Sen-Regular" }}>
+            Open Restaurants
+          </Text>
+        </View>
+
+        {restaurants.map(renderRestaurant)}
+
+      </ScrollView>
 
     </View>
   )
@@ -195,7 +217,6 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 12,
     fontFamily: "Sen-Bold",
-    color: "#000"
   },
 
   filterBtn: {
@@ -217,7 +238,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginTop: 13,
     borderColor: "#eae4e4",
-
   },
 
   modalOverlay: {
@@ -234,7 +254,6 @@ const styles = StyleSheet.create({
     padding: 10,
     borderColor: "#aaa5a5",
     borderWidth: 1
-
   },
 
   modalItem: {
@@ -247,9 +266,17 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontFamily: "Sen-Medium"
   },
+
+  grid: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "space-between",
+    padding: 15
+  },
+
   card1: {
     width: 170,
-    height: 150,
+    height: 160,
     alignItems: "center",
     marginBottom: 20,
   },
@@ -262,10 +289,8 @@ const styles = StyleSheet.create({
 
   whiteBox: {
     position: "absolute",
-    top: 20,
-    zIndex: 1,
-    left: 1,
-
+    top: 25,
+    zIndex: 1
   },
 
   textContainer: {
@@ -277,8 +302,7 @@ const styles = StyleSheet.create({
 
   foodTitle: {
     fontSize: 15,
-    fontFamily: "Sen-Bold",
-    lineHeight: 22
+    fontFamily: "Sen-Bold"
   },
 
   subtitle: {
@@ -286,21 +310,42 @@ const styles = StyleSheet.create({
     fontFamily: "Sen-Regular",
     color: "#5e5555"
   },
+
   priceContainer: {
     position: "absolute",
-    bottom: -8,
+    top: 135,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
     width: 120,
-    zIndex:5
+    zIndex: 5
   },
 
   price: {
     fontSize: 16,
     fontFamily: "Sen-Bold",
     color: "#FF7622"
-  }
+  },
 
+  restaurantCard: {
+    marginTop: 10,
+    paddingHorizontal: 20
+  },
+
+  resTitle: {
+    fontSize: 18,
+    fontFamily: "Sen-Regular",
+  },
+
+  resSub: {
+    fontSize: 14,
+    color: "#8e8e8e"
+  },
+
+  iconRow: {
+    flexDirection: "row",
+    gap: 15,
+    marginTop: 8
+  }
 
 })

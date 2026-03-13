@@ -106,7 +106,8 @@ const HomeScreen = ({navigation}) => {
   return (
     <View style={styles.container}>
 
-      <Modal transparent visible={showOffer} animationType="fade">
+     <View>
+       <Modal transparent visible={showOffer} animationType="fade">
         <View style={styles.modalContainer}>
 
          <View>
@@ -145,6 +146,7 @@ const HomeScreen = ({navigation}) => {
 
         </View>
       </Modal>
+     </View>
 
        <View style={{ flexDirection: "row", marginTop: 17 }}>
               <Text style={styles.text}>Hey Halal, </Text>

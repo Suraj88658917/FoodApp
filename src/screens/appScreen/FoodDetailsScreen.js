@@ -22,6 +22,8 @@ const FoodDetailsScreen = ({ navigation }) => {
 
   const [selectedSize, setSelectedSize] = useState(null);
 
+  console.log("FoodDetails Screen Loaded")
+
   const basePrice = 32;
   const [qty, setQty] = useState(1);
 
@@ -227,7 +229,7 @@ const styles = StyleSheet.create({
   saveBtn: {
     position: "absolute",
     top: 190,
-    right: 20,
+    right: 28,
   },
 
   restaurantBox: {

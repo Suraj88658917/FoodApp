@@ -26,7 +26,7 @@ const SplashScreen = ({ navigation }) => {
         } else if (loginStatus) {
 
           console.log("Navigate → HomeScreen");
-          navigation.replace("HomeScreen");
+          navigation.replace("MainApp");
 
         } else {
 

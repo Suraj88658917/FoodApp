@@ -59,6 +59,8 @@ const SearchScreen = ({ navigation }) => {
 
   const [name, setName] = useState("");
 
+   console.log("SearchScreen Loaded");
+
   const renderItem = ({ item }) => {
   return (
     <View style={{ height: 70, justifyContent: "center" }}>

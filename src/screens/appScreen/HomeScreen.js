@@ -98,7 +98,10 @@ const HomeScreen = ({navigation}) => {
   const [showOffer, setShowOffer] = useState(false);
 
   useEffect(() => {
+
+    console.log("HomeScreen Loaded");
     setTimeout(() => {
+       console.log("Offer Modal Opened");
       setShowOffer(true);
     }, 1000);
   }, []);

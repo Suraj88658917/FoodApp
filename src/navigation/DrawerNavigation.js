@@ -25,12 +25,10 @@ const DrawerNavigation = () => {
           marginLeft: 15,
         }}
       >
-        {/* Menu Button */}
         <TouchableOpacity onPress={() => navigation.toggleDrawer()}>
           <Menu1 size={24} />
         </TouchableOpacity>
 
-        {/* Location Text */}
         <View style={{ marginLeft: 20 }}>
           <Text style={{ color: "#FF7622", fontSize: 12 , fontFamily:"Sen-Bold" }}>
             DELIVER TO
@@ -56,7 +54,7 @@ const DrawerNavigation = () => {
     ),
   })}
 >
-      <Drawer.Screen name="HomeScreen" component={TabNavigation} />
+      <Drawer.Screen name="HomeTabs" component={TabNavigation} />
       <Drawer.Screen name="DetailsScreen" component={DetailsScreen} />
     </Drawer.Navigator>
   );

@@ -29,13 +29,15 @@ const StackNavigation = () => {
       <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
       <Stack.Screen name="VerificationScreen" component={VerificationScreen} />
       <Stack.Screen name="LocationScreen" component={LocationScreen} />
+
       <Stack.Screen name="SearchScreen" component={SearchScreen} />
       <Stack.Screen name="BurgerScreen" component={BurgerScreen} />
       <Stack.Screen name="SandwichScreen" component={SandwichScreen} />
       <Stack.Screen name="PizzaScreen" component={PizzaScreen} />
       <Stack.Screen name="FoodDetailsScreen" component={FoodDetailsScreen} />
       <Stack.Screen name="RestaurantScreen" component={RestaurantScreen} />
-      <Stack.Screen name="HomeScreen" component={DrawerNavigation} />
+      
+      <Stack.Screen name="MainApp" component={DrawerNavigation} />
 
     </Stack.Navigator>
   );

@@ -31,6 +31,8 @@ const PizzaScreen = ({ navigation }) => {
 
   const [modalVisible, setModalVisible] = useState(false);
 
+  console.log("PizzaScreen Loaded")
+
   const renderItem = (item) => (
     <TouchableOpacity key={item.id}>
       <View style={styles.card1}>

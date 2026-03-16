@@ -31,6 +31,8 @@ const SandwichScreen = ({ navigation }) => {
 
   const [modalVisible, setModalVisible] = useState(false);
 
+  console.log("SandwichScreen Loaded")
+
   const renderItem = (item) => (
     <TouchableOpacity key={item.id}>
       <View style={styles.card1}>

@@ -31,6 +31,8 @@ const BurgerScreen = ({ navigation }) => {
 
   const [modalVisible, setModalVisible] = useState(false);
 
+  console.log("BurgerScreen Loaded")
+
   const renderItem = (item) => (
     <TouchableOpacity onPress={() => navigation.navigate("FoodDetailsScreen")}
      key={item.id}>

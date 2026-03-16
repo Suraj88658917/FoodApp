@@ -1,4 +1,12 @@
-import {StyleSheet,Text,View,TextInput,TouchableOpacity,FlatList,Modal} from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TextInput,
+  TouchableOpacity,
+  FlatList,
+  Modal
+} from "react-native";
 import React, { useState, useEffect } from "react";
 
 import Search1 from "../../assets/image/Search.svg";
@@ -9,6 +17,10 @@ import Rate from "../../assets/image/Rate.svg";
 import Free from "../../assets/image/Free.svg";
 import Min from "../../assets/image/Min.svg";
 
+import Menu1 from "../../assets/image/Menu.svg";
+import Polygon1 from "../../assets/image/Polygon.svg";
+import Cart1 from "../../assets/image/Cart.svg";
+
 import LinearGradient from "react-native-linear-gradient";
 import Elements from "../../assets/image/Elements.svg";
 import Cut from "../../assets/image/Cut.svg";
@@ -17,64 +29,50 @@ const categories = [
   { id: "1", title: "Pizza" },
   { id: "2", title: "Burger" },
   { id: "3", title: "Sandwich" },
-  { id: "4", title: "Coffee" },
-  { id: "5", title: "Burger" },
-  { id: "6", title: "Pizza" },
-  { id: "7", title: "Sandwich" },
+  { id: "4", title: "Coffee" }
 ];
 
 const restaurants = [
   {
     id: "1",
     title: "Rose Garden Restaurant",
-    subtitle: "Burger - Chicken - Rice - Wings",
+    subtitle: "Burger - Chicken - Rice - Wings"
   },
   {
     id: "2",
     title: "Food Palace",
-    subtitle: "Pizza - Pasta - Sandwich",
-  },
-   {
-    id: "3",
-    title: "Rose Garden Restaurant",
-    subtitle: "Burger - Chicken - Rice - Wings",
-  },
-  {
-    id: "4",
-    title: "Food Palace",
-    subtitle: "Pizza - Pasta - Sandwich",
-  },
-   {
-    id: "5",
-    title: "Rose Garden Restaurant",
-    subtitle: "Burger - Chicken - Rice - Wings",
-  },
-  {
-    id: "6",
-    title: "Food Palace",
-    subtitle: "Pizza - Pasta - Sandwich",
-  },
+    subtitle: "Pizza - Pasta - Sandwich"
+  }
 ];
 
+const HomeScreen = ({ navigation }) => {
 
- const renderCategory = ({ item }) => {
-    return (
-      <View style={{ height: 150, paddingHorizontal: 7 }}>
-        <TouchableOpacity style={styles.card}>
-          <Squar width={120} height={70} />
-        </TouchableOpacity>
+  const [name, setName] = useState("");
+  const [showOffer, setShowOffer] = useState(false);
 
-        <Text style={styles.title}>{item.title}</Text>
-      </View>
-    );
-  };
+  useEffect(() => {
+    console.log("HomeScreen Loaded");
 
-  const renderRestaurant = ({ item }) => {
-    return (
-      <View style={styles.restaurantCard}>
+    setTimeout(() => {
+      console.log("Offer Modal Opened");
+      setShowOffer(true);
+    }, 1000);
+  }, []);
 
-       <TouchableOpacity>
-         <Squarlarge width={350} height={170} />
+  const renderCategory = ({ item }) => (
+    <View style={{ height: 150, paddingHorizontal: 7 }}>
+      <TouchableOpacity style={styles.card}>
+        <Squar width={120} height={70} />
+      </TouchableOpacity>
+
+      <Text style={styles.title}>{item.title}</Text>
+    </View>
+  );
+
+  const renderRestaurant = ({ item }) => (
+    <View style={styles.restaurantCard}>
+      <TouchableOpacity>
+        <Squarlarge width={350} height={170} />
 
         <View style={{ marginTop: 8 }}>
           <Text style={styles.resTitle}>{item.title}</Text>
@@ -86,37 +84,47 @@ const restaurants = [
             <Min width={74} height={20} />
           </View>
         </View>
-       </TouchableOpacity>
-
-      </View>
-    );
-  };
-
-const HomeScreen = ({navigation}) => {
-
-  const [name, setName] = useState("");
-  const [showOffer, setShowOffer] = useState(false);
-
-  useEffect(() => {
-
-    console.log("HomeScreen Loaded");
-    setTimeout(() => {
-       console.log("Offer Modal Opened");
-      setShowOffer(true);
-    }, 1000);
-  }, []);
+      </TouchableOpacity>
+    </View>
+  );
 
   return (
     <View style={styles.container}>
 
-     <View>
-       <Modal transparent visible={showOffer} animationType="fade">
+      {/* HEADER */}
+      <View style={styles.header}>
+
+        <TouchableOpacity onPress={() => navigation.toggleDrawer()}>
+          <Menu1 width={45} height={45} />
+        </TouchableOpacity>
+
+        <View style={{ marginLeft: 20 }}>
+          <Text style={styles.deliver}>DELIVER TO</Text>
+
+          <View style={{ flexDirection: "row", alignItems: "center" }}>
+            <Text style={styles.location}>Halal Lab office</Text>
+
+            <TouchableOpacity style={{ paddingHorizontal: 5 }}>
+              <Polygon1 width={10} height={10} />
+            </TouchableOpacity>
+          </View>
+        </View>
+
+        <TouchableOpacity style={styles.cart}>
+          <Cart1 width={45} height={45} />
+        </TouchableOpacity>
+
+      </View>
+
+      {/* OFFER MODAL */}
+
+      <Modal transparent visible={showOffer} animationType="fade">
+
         <View style={styles.modalContainer}>
 
-         <View>
-           <LinearGradient
+          <LinearGradient
             colors={["#FFEB34", "#E76F00"]}
-            start={{ x: 0, y: 1 }}
+            start={{ x: 1, y: 0 }}
             end={{ x: 1, y: 1 }}
             style={styles.popup}
           >
@@ -130,7 +138,7 @@ const HomeScreen = ({navigation}) => {
 
             <Text style={styles.title1}>Hurry Offers!</Text>
 
-            <Elements width={250} height={170}  style={styles.Elements}/>
+            <Elements width={250} height={170} style={styles.Elements} />
 
             <Text style={styles.message}>#1243CD2</Text>
 
@@ -140,21 +148,25 @@ const HomeScreen = ({navigation}) => {
 
             <TouchableOpacity
               style={styles.closeBtn}
+              onPress={() => setShowOffer(false)}
             >
               <Text style={styles.btnText}>GOT IT</Text>
             </TouchableOpacity>
 
           </LinearGradient>
-         </View>
 
         </View>
-      </Modal>
-     </View>
 
-       <View style={{ flexDirection: "row", marginTop: 17 }}>
-              <Text style={styles.text}>Hey Halal, </Text>
-              <Text style={styles.text1}>Good Afternoon!</Text>
-            </View>
+      </Modal>
+
+      {/* GREETING */}
+
+      <View style={{ flexDirection: "row", marginTop: 15 }}>
+        <Text style={styles.text}>Hey Halal, </Text>
+        <Text style={styles.text1}>Good Afternoon!</Text>
+      </View>
+
+      {/* MAIN LIST */}
 
       <FlatList
         data={restaurants}
@@ -164,20 +176,19 @@ const HomeScreen = ({navigation}) => {
 
         ListHeaderComponent={
           <>
-            <TouchableOpacity onPress={() => navigation.navigate("SearchScreen")}
-            >
-              <View style={styles.searchContainer}>
-              <TextInput
-                placeholder="Search dishes, restaurants"
-                placeholderTextColor="#6d6e70"
-                value={name}
-                onChangeText={setName}
-                style={styles.input}
-              />
-                  <Search1 style={styles.Search1} />
-            </View>
-            </TouchableOpacity>
 
+            <TouchableOpacity onPress={() => navigation.navigate("SearchScreen")}>
+              <View style={styles.searchContainer}>
+                <TextInput
+                  placeholder="Search dishes, restaurants"
+                  placeholderTextColor="#6d6e70"
+                  value={name}
+                  onChangeText={setName}
+                  style={styles.input}
+                />
+                <Search1 style={styles.Search1} />
+              </View>
+            </TouchableOpacity>
 
             <View style={styles.headerRow}>
               <Text style={styles.headerText}>All Categories</Text>
@@ -196,7 +207,7 @@ const HomeScreen = ({navigation}) => {
               showsHorizontalScrollIndicator={false}
             />
 
-            <View style={styles.headerRow1}>
+            <View style={styles.headerRow2}>
               <Text style={styles.headerText}>Open Restaurants</Text>
 
               <TouchableOpacity style={{ flexDirection: "row", alignItems: "center" }}>
@@ -220,8 +231,31 @@ const styles = StyleSheet.create({
 
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    paddingHorizontal: 15
+    backgroundColor: "#fffdfd",
+    paddingHorizontal: 15,
+  },
+
+  header: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    marginTop:60
+  },
+
+  deliver: {
+    color: "#FF7622",
+    fontSize: 12,
+    fontFamily: "Sen-Bold"
+  },
+
+  location: {
+    fontFamily: "Sen-Regular",
+    fontSize: 13,
+    color: "#787373"
+  },
+
+  cart: {
+    marginLeft: "auto"
   },
 
   text: {
@@ -241,13 +275,13 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     marginTop: 20,
     paddingHorizontal: 45,
-    height: 55,
+    height: 55
   },
 
   input: {
     flex: 1,
     fontSize: 13,
-    fontFamily: "Sen-Regular",
+    fontFamily: "Sen-Regular"
   },
 
   Search1: {
@@ -262,14 +296,18 @@ const styles = StyleSheet.create({
   },
 
   headerRow1: {
-    flexDirection: "row",
-    justifyContent: "space-between",
     marginTop: 20
   },
 
+  headerRow2: {
+  flexDirection: "row",
+  justifyContent: "space-between",
+  alignItems: "center",
+  marginTop: 20
+},
   headerText: {
     fontSize: 19,
-    fontFamily: "Sen-Bold"
+    fontFamily: "Sen-Regular"
   },
 
   card: {
@@ -296,8 +334,7 @@ const styles = StyleSheet.create({
 
   resTitle: {
     fontSize: 18,
-    fontFamily: "Sen-Bold",
-    color: "#000"
+    fontFamily: "Sen-Bold"
   },
 
   resSub: {
@@ -320,7 +357,7 @@ const styles = StyleSheet.create({
 
   popup: {
     width: 327,
-    height:395,
+    height: 395,
     padding: 20,
     borderRadius: 30,
     alignItems: "center"
@@ -328,54 +365,49 @@ const styles = StyleSheet.create({
 
   cutBtn: {
     position: "absolute",
-    top:-10,
-    left:280
+    top: -10,
+    right: -10
   },
 
   title1: {
     fontSize: 40,
     fontFamily: "Sen-Bold",
     color: "#fff",
-    position:"absolute",
-    top:75
-    
+    marginTop: 60
   },
 
   message: {
     fontSize: 30,
     color: "#fff",
-    fontFamily:"Sen-Bold",
-    top:150
+    fontFamily: "Sen-Bold",
+    marginTop: 40
   },
 
   desc: {
     color: "#fff",
     textAlign: "center",
-    fontFamily:"Sen-Bold",
-    fontSize:16,
-    lineHeight:60,
-    position:"absolute",
-    top:230
+    fontFamily: "Sen-Bold",
+    fontSize: 16,
+    marginTop: 30
   },
 
   closeBtn: {
     paddingVertical: 20,
-    paddingHorizontal: 100,
+    paddingHorizontal: 110,
     borderRadius: 10,
-    marginTop: 15,
-    borderColor:"#fff",
-    borderWidth:2,
-    position:"absolute",
-    top:290
+    marginTop: 40,
+    borderColor: "#fff",
+    borderWidth: 2
   },
 
   btnText: {
     color: "#fff",
-    fontFamily: "Sen-Bold",
+    fontFamily: "Sen-Bold"
   },
-  Elements:{
-    position:"absolute",
-    top:40
+
+  Elements: {
+    position: "absolute",
+    top: 40
   }
 
 });

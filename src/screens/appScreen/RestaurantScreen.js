@@ -485,7 +485,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     padding: 20,
     width: 327,
-    height: 668,
+    height: 630,
     borderRadius: 20
 
   },
@@ -526,9 +526,9 @@ const styles = StyleSheet.create({
 
   filterButton: {
     backgroundColor: "#FF7622",
-    marginTop: 25,
+    marginTop: 10,
     paddingHorizontal: 50,
-    paddingVertical: 20,
+    paddingVertical: 15,
     borderRadius: 10,
     alignItems: "center"
   },

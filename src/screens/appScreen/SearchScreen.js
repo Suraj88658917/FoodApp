@@ -74,7 +74,7 @@ const SearchScreen = ({ navigation }) => {
             borderColor: "#d5cece",
             borderWidth: 1,
             justifyContent: "center",
-            height: 46,
+            height: 40,
             width: 94,
             alignItems: "center",
             marginLeft: 10,
@@ -139,7 +139,7 @@ const SearchScreen = ({ navigation }) => {
 
       >
         <View style={{ height: 50, justifyContent: "flex-end", paddingHorizontal: 10 }}>
-          <Text style={{ fontSize: 22, fontFamily: "Sen-Regular" }}>Recent Keywords</Text>
+          <Text style={{ fontSize: 20, fontFamily: "Sen-Regular" }}>Recent Keywords</Text>
         </View>
 
         <View>
@@ -153,7 +153,7 @@ const SearchScreen = ({ navigation }) => {
         </View>
 
         <View style={{ height: 60, justifyContent: "flex-end", paddingHorizontal: 10, justifyContent: "center" }}>
-          <Text style={{ fontSize: 20, fontFamily: "Sen-Regular" }}>Suggested Restaurants</Text>
+          <Text style={{ fontSize: 18, fontFamily: "Sen-Regular" }}>Suggested Restaurants</Text>
         </View>
 
         <View style={{ paddingHorizontal: 10 }}>
@@ -339,7 +339,7 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     marginTop: 10,
     paddingHorizontal: 15,
-    height: 62,
+    height: 60,
   },
 
   input: {
@@ -354,7 +354,7 @@ const styles = StyleSheet.create({
   card: {
     flexDirection: "row",
     alignItems: "center",
-    height: 80,
+    height: 70,
     borderRadius: 12,
     marginBottom: 12,
   },
@@ -364,7 +364,7 @@ const styles = StyleSheet.create({
   },
   divider: {
     height: 1,
-    backgroundColor: "#E5E5E5",
+    backgroundColor: "#f0e9e9",
   },
   card1: {
     width: 170,
@@ -374,16 +374,17 @@ const styles = StyleSheet.create({
 
   box: {
     position: "absolute",
-    top: 0,
+    top: 4,
     zIndex: 3
   },
 
   whiteBox: {
     position: "absolute",
-    top: 30,
     zIndex: 1,
-    left: -1
-
+    left: -1,
+    paddingHorizontal:90,
+    paddingVertical:90,
+    
   },
 
   textContainer: {

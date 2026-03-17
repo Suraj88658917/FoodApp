@@ -20,7 +20,7 @@ const LocationScreen = ({ navigation }) => {
 
       console.log("Location Permission:", storage.getBoolean("locationAccess"));
 
-      navigation.replace("HomeScreen");
+      navigation.replace("MainApp");
 
     } else {
 

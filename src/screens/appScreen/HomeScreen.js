@@ -91,7 +91,6 @@ const HomeScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
 
-      {/* HEADER */}
       <View style={styles.header}>
 
         <TouchableOpacity onPress={() => navigation.toggleDrawer()}>
@@ -116,9 +115,9 @@ const HomeScreen = ({ navigation }) => {
 
       </View>
 
-      {/* OFFER MODAL */}
 
-      <Modal transparent visible={showOffer} animationType="fade">
+      <View>
+        <Modal transparent visible={showOffer} animationType="fade">
 
         <View style={styles.modalContainer}>
 
@@ -158,17 +157,17 @@ const HomeScreen = ({ navigation }) => {
         </View>
 
       </Modal>
+      </View>
 
-      {/* GREETING */}
 
       <View style={{ flexDirection: "row", marginTop: 15 }}>
         <Text style={styles.text}>Hey Halal, </Text>
         <Text style={styles.text1}>Good Afternoon!</Text>
       </View>
 
-      {/* MAIN LIST */}
 
-      <FlatList
+     <View>
+       <FlatList
         data={restaurants}
         keyExtractor={(item) => item.id}
         renderItem={renderRestaurant}
@@ -199,7 +198,8 @@ const HomeScreen = ({ navigation }) => {
               </TouchableOpacity>
             </View>
 
-            <FlatList
+           <View>
+             <FlatList
               data={categories}
               renderItem={renderCategory}
               horizontal
@@ -207,6 +207,7 @@ const HomeScreen = ({ navigation }) => {
               showsHorizontalScrollIndicator={false}
             />
 
+           </View>
             <View style={styles.headerRow2}>
               <Text style={styles.headerText}>Open Restaurants</Text>
 
@@ -220,6 +221,7 @@ const HomeScreen = ({ navigation }) => {
         }
 
       />
+     </View>
 
     </View>
   );

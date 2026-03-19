@@ -15,8 +15,13 @@ import SandwichScreen from "../screens/appScreen/SandwichScreen.js";
 import PizzaScreen from "../screens/appScreen/PizzaScreen.js";
 import FoodDetailsScreen from "../screens/appScreen/FoodDetailsScreen.js";
 import RestaurantScreen from "../screens/appScreen/RestaurantScreen.js";
-import MyProfileScreen from "../screens/appScreen/MyProfileScreen.js";
 import ChefFoodDetailsScreen from "../screens/appScreen/ChefFoodDetailsScreen.js";
+import WithdrawScreen from "../screens/appScreen/WithdrawScreen.js";
+import PersonalInfoScreen from "../screens/appScreen/PersonalInfoScreen.js";
+import EditScreen from "../screens/appScreen/EditScreen.js";
+import ProfileScreen from "../screens/appScreen/ProfileScreen.js";
+import AddressScreen from "../screens/appScreen/AddressScreen.js";
+import ADDaddress from "../screens/appScreen/ADDaddress.js";
 
 const Stack = createNativeStackNavigator();
 
@@ -39,9 +44,14 @@ const StackNavigation = () => {
       <Stack.Screen name="FoodDetailsScreen" component={FoodDetailsScreen} />
       <Stack.Screen name="RestaurantScreen" component={RestaurantScreen} />
 
-         <Stack.Screen name="MyProfileScreen" component={MyProfileScreen} />
-         <Stack.Screen name="ChefFoodDetailsScreen" component={ChefFoodDetailsScreen} />
-      
+      <Stack.Screen name="ChefFoodDetailsScreen" component={ChefFoodDetailsScreen} />
+      <Stack.Screen name="WithdrawScreen" component={WithdrawScreen} />
+      <Stack.Screen name="PersonalInfoScreen" component={PersonalInfoScreen} />
+      <Stack.Screen name="EditScreen" component={EditScreen} />
+      <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
+       <Stack.Screen name="AddressScreen" component={AddressScreen} />
+          <Stack.Screen name="ADDaddress" component={ADDaddress} />
+
       <Stack.Screen name="MainApp" component={DrawerNavigation} />
 
     </Stack.Navigator>

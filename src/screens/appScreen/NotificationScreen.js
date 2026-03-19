@@ -35,6 +35,7 @@ const data1 = [
 
 const NotificationScreen = ({ navigation }) => {
   const [selected, setSelected] = useState(categories[0]);
+  console.log("Notifications and Message screen")
 
   const renderItem = ({ item }) => (
     <View style={styles.row}>
@@ -159,12 +160,16 @@ const styles = StyleSheet.create({
     marginRight: 30,
     alignItems: "center",
     marginTop: 15,
+    justifyContent:"space-between"
+
     
   },
 
   categoryText: {
     fontSize: 14,
-    color: "#aaa"
+    color: "#aaa",
+    paddingHorizontal:50,
+    padding:10,
     
   },
 
@@ -174,7 +179,7 @@ const styles = StyleSheet.create({
 
   underline: {
     height: 2,
-    width: "140%",
+    width: "100%",
     backgroundColor: "#FF7622",
     marginTop: 5,
   },

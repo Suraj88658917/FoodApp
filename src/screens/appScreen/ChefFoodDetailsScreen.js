@@ -109,7 +109,7 @@ const ChefFoodDetailsScreen = ({ navigation }) => {
         borderRadius: 61,
         position: "absolute",
         top: 300,
-        left: 300,
+        left: 280,
         paddingHorizontal: 15,
         paddingVertical: 6
       }}>

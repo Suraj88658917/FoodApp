@@ -30,7 +30,7 @@ const LoginScreen = ({ navigation }) => {
     console.log("Login Saved:", storage.getBoolean("isLoggedIn"));
     console.log("User Email:", storage.getString("userEmail"));
 
-    navigation.replace("HomeScreen");
+    navigation.replace("MainApp");
   };
 
   const openLink = (url) => {

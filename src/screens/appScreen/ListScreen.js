@@ -87,7 +87,7 @@ const ListScreen = ({ navigation }) => {
     const isSelected = selected === item.title;
 
     return (
-      <View style={{ marginRight: 16, paddingHorizontal: 24, marginTop: 17 }}>
+      <View style={{ marginRight: 16, paddingHorizontal: 20, marginTop: 17 }}>
         <TouchableOpacity
           onPress={() => setSelected(item.title)}
           style={{ alignItems: "center" }}

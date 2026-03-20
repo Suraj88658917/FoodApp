@@ -5,7 +5,8 @@ import {
   TouchableOpacity,
   TextInput,
   FlatList,
-  Image
+  Image,
+  ScrollView
 } from 'react-native';
 import React, { useState } from 'react';
 import Back1 from "../../assets/image/back.svg";
@@ -13,13 +14,46 @@ import Additem from "../../assets/image/Additem.svg";
 import { launchImageLibrary } from 'react-native-image-picker';
 import Vector2 from "../../assets/image/Vector2.svg";
 
+import Dicon1 from "../../assets/image/Dicon1.svg";
+import AWicon1 from "../../assets/image/AWicon1.svg";
+import Dicon3 from "../../assets/image/Dicon3.svg";
+import AWicon2 from "../../assets/image/AWicon2.svg";
+import Dicon5 from "../../assets/image/Dicon5.svg";
+import AWicon3 from "../../assets/image/AWicon3.svg";
+
+import Fruit1 from "../../assets/image/fruit1.svg";
+import Fruit2 from "../../assets/image/fruit2.svg";
+import Fruit3 from "../../assets/image/fruit3.svg";
+import Fruit4 from "../../assets/image/fruit4.svg";
+import Fruit5 from "../../assets/image/fruit5.svg";
+import Fruit6 from "../../assets/image/fruit6.svg";
+
 const AddScreen = ({ navigation }) => {
+
+  console.log("AddScreen Loaded");
 
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [images, setImages] = useState([null, null, null, null, null]);
   const [pickup, setPickup] = useState(false);
   const [delivery, setDelivery] = useState(false);
+
+
+  const handleSave = () => {
+
+  const itemData = {
+    name: name,
+    price: price,
+    images: images,
+    pickup: pickup,
+    delivery: delivery
+  };
+
+  console.log("Saved Item Data:", itemData);
+
+  navigation.navigate("Home", { newItem: itemData });
+
+};
 
   const handleReset = () => {
     setName("");
@@ -45,9 +79,7 @@ const AddScreen = ({ navigation }) => {
     );
   };
 
-  const data = [0, 1, 2, 3, 4];
-
-  const renderItem = ({ item, index }) => {
+  const renderItem = ({ index }) => {
     return (
       <TouchableOpacity onPress={() => openGallery(index)}>
         <View style={styles.imageBox}>
@@ -79,11 +111,11 @@ const AddScreen = ({ navigation }) => {
         </TouchableOpacity>
       </View>
 
-      <View style={styles.labelContainer}>
-        <Text style={styles.label}>ITEM NAME</Text>
-      </View>
+      <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
 
-      <View style={styles.inputContainer}>
+
+        <Text style={styles.label}>ITEM NAME</Text>
+
         <TextInput
           placeholder="Mazali Chicken Halim"
           placeholderTextColor="#999"
@@ -91,71 +123,123 @@ const AddScreen = ({ navigation }) => {
           onChangeText={setName}
           style={styles.input}
         />
-      </View>
 
-      <View style={styles.uploadTextContainer}>
-        <Text style={styles.uploadText}>UPLOAD PHOTO/VIDEO</Text>
-      </View>
+        <Text style={styles.label}>UPLOAD PHOTO/VIDEO</Text>
 
-      <View>
-        <FlatList
-          data={data}
-          keyExtractor={(item) => item.toString()}
-          renderItem={renderItem}
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          contentContainerStyle={{ paddingHorizontal: 20 }}
-        />
-
-      </View>
-
-      <View style={{ height: 40, justifyContent: "center", paddingHorizontal: 20, marginTop: 10 }}>
-        <Text style={{ fontSize: 13, fontFamily: "Sen-Regular" }}>PRICE</Text>
-      </View>
-
-      <View style={styles.priceRow}>
-        <TextInput
-          placeholder="Price"
-          placeholderTextColor="#999"
-          value={price}
-          onChangeText={setPrice}
-          style={styles.input1}
-          keyboardType={"number-pad"}
-        />
-
-        <View style={styles.checkboxContainer}>
-
-          <TouchableOpacity
-            style={styles.checkboxRow}
-            onPress={() => setPickup(!pickup)}
-          >
-            <View style={[styles.checkbox, pickup && styles.checked]}>
-              {pickup && <Text style={styles.tick}>✓</Text>}
-            </View>
-            <Text style={styles.checkboxText}>Pick Up</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            style={styles.checkboxRow}
-            onPress={() => setDelivery(!delivery)}
-          >
-            <View style={[styles.checkbox, delivery && styles.checked]}>
-              {delivery && <Text style={styles.tick}>✓</Text>}
-            </View>
-            <Text style={styles.checkboxText}>Delivery</Text>
-          </TouchableOpacity>
-
+        <View style={{ marginTop: 10 }}>
+          <FlatList
+            data={[0, 1, 2, 3, 4]}
+            keyExtractor={(item) => item.toString()}
+            renderItem={renderItem}
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={{ paddingLeft: 20 }}
+          />
         </View>
-      </View>
 
-      <View style={styles.headerRow2}>
-        <Text style={styles.headerText}>Basic</Text>
+        <Text style={styles.label}>PRICE</Text>
 
-        <TouchableOpacity style={{ flexDirection: "row", alignItems: "center" }}>
-          <Text style={{ marginRight: 5, color: "#999" }}>See All</Text>
-          <Vector2 width={6} height={10} />
-        </TouchableOpacity>
-      </View>
+        <View style={styles.priceRow}>
+          <TextInput
+            placeholder="Price"
+            placeholderTextColor="#999"
+            value={price}
+            onChangeText={setPrice}
+            style={styles.priceInput}
+            keyboardType="number-pad"
+          />
+
+          <View style={styles.checkboxContainer}>
+
+            <TouchableOpacity
+              style={styles.checkboxRow}
+              onPress={() => setPickup(!pickup)}
+            >
+              <View style={[styles.checkbox, pickup && styles.checked]}>
+                {pickup && <Text style={styles.tick}>✓</Text>}
+              </View>
+              <Text style={styles.checkboxText}>Pick Up</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              style={styles.checkboxRow}
+              onPress={() => setDelivery(!delivery)}
+            >
+              <View style={[styles.checkbox, delivery && styles.checked]}>
+                {delivery && <Text style={styles.tick}>✓</Text>}
+              </View>
+              <Text style={styles.checkboxText}>Delivery</Text>
+            </TouchableOpacity>
+
+          </View>
+        </View>
+
+        <View style={styles.sectionHeader}>
+          <Text style={styles.sectionTitle}>Basic</Text>
+
+          <TouchableOpacity style={styles.seeAll}>
+            <Text style={styles.seeAllText}>See All</Text>
+            <Vector2 width={6} height={10} />
+          </TouchableOpacity>
+        </View>
+
+        <ScrollView horizontal showsHorizontalScrollIndicator={false} style={{ paddingLeft: 20 }}>
+          <View style={styles.iconRow}>
+            <TouchableOpacity><Dicon1 width={50} height={84} /></TouchableOpacity>
+            <TouchableOpacity><AWicon1 width={50} height={70} /></TouchableOpacity>
+            <TouchableOpacity><Dicon3 width={50} height={84} /></TouchableOpacity>
+            <TouchableOpacity><AWicon2 width={50} height={70} /></TouchableOpacity>
+            <TouchableOpacity><Dicon5 width={50} height={84} /></TouchableOpacity>
+            <TouchableOpacity><AWicon3 width={50} height={70} /></TouchableOpacity>
+            <TouchableOpacity><AWicon2 width={50} height={70} /></TouchableOpacity>
+            <TouchableOpacity><Dicon5 width={50} height={84} /></TouchableOpacity>
+            <TouchableOpacity><AWicon3 width={50} height={70} /></TouchableOpacity>
+          </View>
+        </ScrollView>
+
+        <View style={styles.sectionHeader}>
+          <Text style={styles.sectionTitle}>Fruit</Text>
+
+          <TouchableOpacity style={styles.seeAll}>
+            <Text style={styles.seeAllText}>See All</Text>
+            <Vector2 width={6} height={10} />
+          </TouchableOpacity>
+        </View>
+
+        <ScrollView horizontal showsHorizontalScrollIndicator={false} style={{ paddingLeft: 20 }}>
+          <View style={styles.iconRow}>
+            <TouchableOpacity><Fruit1 width={50} height={70} /></TouchableOpacity>
+            <TouchableOpacity><Fruit2 width={50} height={70} /></TouchableOpacity>
+            <TouchableOpacity><Fruit3 width={50} height={70} /></TouchableOpacity>
+            <TouchableOpacity><Fruit4 width={50} height={70} /></TouchableOpacity>
+            <TouchableOpacity><Fruit5 width={50} height={70} /></TouchableOpacity>
+            <TouchableOpacity><Fruit6 width={50} height={70} /></TouchableOpacity>
+            <TouchableOpacity><Fruit4 width={50} height={70} /></TouchableOpacity>
+            <TouchableOpacity><Fruit5 width={50} height={70} /></TouchableOpacity>
+            <TouchableOpacity><Fruit6 width={50} height={70} /></TouchableOpacity>
+          </View>
+        </ScrollView>
+
+
+        <View style={{ paddingHorizontal: 20, marginTop: 10 }}>
+          <Text style={{ fontSize: 15, fontFamily: "Sen-Regular" }}>DETAILS</Text>
+        </View>
+
+        <View style={styles.infoBox}>
+          <Text style={styles.infoText}>
+            Lorem ipsum dolor sit amet, consectetur adips{"\n"}
+            cing elit. Bibendum in vel, mattis et amet dui{"\n"}
+            mauris turpis.
+          </Text>
+        </View>
+
+        <View style={styles.saveContainer}>
+          <TouchableOpacity style={styles.saveButton} onPress={handleSave}>
+            <Text style={styles.saveText}>SAVE CHANGES</Text>
+          </TouchableOpacity>
+        </View>
+
+      </ScrollView>
 
     </View>
   );
@@ -164,6 +248,7 @@ const AddScreen = ({ navigation }) => {
 export default AddScreen;
 
 const styles = StyleSheet.create({
+
   container: {
     flex: 1,
     backgroundColor: "#fff"
@@ -173,13 +258,14 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     marginTop: 50,
-    paddingHorizontal: 20
+    paddingHorizontal: 20,
+    marginBottom: 10
   },
 
   backButton: {
     width: 45,
     height: 45,
-    borderRadius: 21,
+    borderRadius: 22,
     backgroundColor: "#ECF0F4",
     justifyContent: "center",
     alignItems: "center",
@@ -199,43 +285,24 @@ const styles = StyleSheet.create({
     color: "#ffa200"
   },
 
-  labelContainer: {
-    marginTop: 25,
-    paddingHorizontal: 25
-  },
-
   label: {
-    fontSize: 15,
+    fontSize: 13,
     fontFamily: "Sen-Regular",
-    color: "#000"
-  },
-
-  inputContainer: {
-    marginTop: 10,
-    paddingHorizontal: 25
+    color: "#000",
+    marginTop: 20,
+    marginLeft: 20,
+    marginBottom: 8
   },
 
   input: {
     height: 55,
-    fontFamily: "Sen-Regular",
+    marginHorizontal: 20,
     backgroundColor: "#f3f3f35d",
     borderRadius: 12,
     paddingHorizontal: 15,
     fontSize: 14,
     borderWidth: 1,
     borderColor: "#e9e2e2"
-  },
-
-  uploadTextContainer: {
-    height: 50,
-    justifyContent: "center",
-    paddingHorizontal: 20
-  },
-
-  uploadText: {
-    fontSize: 13,
-    fontFamily: "Sen-Regular",
-    color: "#32343E"
   },
 
   imageBox: {
@@ -255,11 +322,10 @@ const styles = StyleSheet.create({
   priceRow: {
     flexDirection: "row",
     alignItems: "center",
-    paddingHorizontal: 20,
-    marginTop: 5
+    paddingHorizontal: 20
   },
 
-  input1: {
+  priceInput: {
     height: 50,
     backgroundColor: "#f3f3f35d",
     borderRadius: 12,
@@ -267,18 +333,19 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#e9e2e2",
     width: 120,
-    fontFamily: "Sen-Regular"
+    marginRight: 15,
+    paddingVertical: 10
   },
 
   checkboxContainer: {
     flexDirection: "row",
-    marginLeft: 20
+    paddingHorizontal: 10
   },
 
   checkboxRow: {
     flexDirection: "row",
     alignItems: "center",
-    marginRight: 20
+    marginRight: 50
   },
 
   checkbox: {
@@ -287,7 +354,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#999",
     borderRadius: 5,
-    marginRight: 8,
+    marginRight: 6,
     justifyContent: "center",
     alignItems: "center"
   },
@@ -303,20 +370,79 @@ const styles = StyleSheet.create({
   },
 
   checkboxText: {
-    fontSize: 14,
+    fontSize: 13,
     fontFamily: "Sen-Regular",
-    color: "#999"
+    color: "#555"
   },
-  headerRow2: {
+
+  sectionHeader: {
     flexDirection: "row",
     justifyContent: "space-between",
-    marginTop: 20,
+    marginTop: 25,
     paddingHorizontal: 20
   },
-  headerText: {
+
+  sectionTitle: {
     fontSize: 16,
     fontFamily: "Sen-Regular",
-    color: "#999"
+    color: "#000"
   },
+
+  seeAll: {
+    flexDirection: "row",
+    alignItems: "center"
+  },
+
+  seeAllText: {
+    marginRight: 5,
+    color: "#999",
+    fontSize: 13
+  },
+
+  iconRow: {
+    flexDirection: "row",
+    gap: 20,
+    marginTop: 15
+  },
+  infoBox: {
+    marginTop: 10,
+    width: "90%",
+    height: 103,
+    borderRadius: 8,
+    borderColor: "#E8EAED",
+    borderWidth: 1,
+    alignSelf: "center",
+    justifyContent: "center",
+    alignItems: "center",
+    paddingHorizontal: 10
+  },
+
+  infoText: {
+    fontSize: 13,
+    fontFamily: "Sen-Regular",
+    lineHeight: 18,
+    color: "#555"
+  },
+  saveContainer: {
+  paddingHorizontal: 20,
+  paddingVertical: 20,
+  backgroundColor: "#fff"
+},
+
+saveButton: {
+  height: 55,
+  backgroundColor: "#FF7622",
+  borderRadius: 12,
+  justifyContent: "center",
+  alignItems: "center"
+},
+
+saveText: {
+  color: "#fff",
+  fontSize: 15,
+  fontFamily: "Sen-Bold",
+  letterSpacing: 1
+}
+
 
 });

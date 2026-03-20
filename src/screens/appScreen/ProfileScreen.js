@@ -173,7 +173,7 @@ const [phone, setPhone] = useState("");
 
         <TouchableOpacity
           style={styles.drawerRow}
-          // onPress={() => navigation.navigate()}
+          onPress={() => navigation.navigate("ReviewsScreen")}
         >
           <View style={styles.leftRow}>
             <User width={40} height={40} />

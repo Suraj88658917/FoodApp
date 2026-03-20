@@ -22,6 +22,7 @@ import EditScreen from "../screens/appScreen/EditScreen.js";
 import ProfileScreen from "../screens/appScreen/ProfileScreen.js";
 import AddressScreen from "../screens/appScreen/AddressScreen.js";
 import ADDaddress from "../screens/appScreen/ADDaddress.js";
+import ReviewsScreen from  "../screens/appScreen/ReviewsScreen.js";
 
 const Stack = createNativeStackNavigator();
 
@@ -49,8 +50,10 @@ const StackNavigation = () => {
       <Stack.Screen name="PersonalInfoScreen" component={PersonalInfoScreen} />
       <Stack.Screen name="EditScreen" component={EditScreen} />
       <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
-       <Stack.Screen name="AddressScreen" component={AddressScreen} />
-          <Stack.Screen name="ADDaddress" component={ADDaddress} />
+      <Stack.Screen name="AddressScreen" component={AddressScreen} />
+      <Stack.Screen name="ADDaddress" component={ADDaddress} />
+
+      <Stack.Screen name="ReviewsScreen" component={ReviewsScreen} />
 
       <Stack.Screen name="MainApp" component={DrawerNavigation} />
 

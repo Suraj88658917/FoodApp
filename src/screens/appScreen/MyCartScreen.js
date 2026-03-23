@@ -44,6 +44,23 @@ const MyCartScreen = ({ navigation }) => {
 
   const totalPrice = cartData.reduce((sum, item) => sum + item.price * item.qty, 0);
 
+   const handlePlaceOrder = () => {
+
+    const orderData = {
+      cartItems: cartData,
+      totalPrice: totalPrice,
+      address: address,
+    };
+
+    console.log("ORDER DATA ");
+    console.log("Cart Items:", orderData.cartItems);
+    console.log("Total Price:", orderData.totalPrice);
+    console.log("Address:", orderData.address);
+    
+
+    navigation.navigate("PaymentScreen", orderData);
+  };
+
   const renderItem = ({ item }) => {
     return (
       <View style={styles.cartItem}>
@@ -132,8 +149,10 @@ const MyCartScreen = ({ navigation }) => {
             </TouchableOpacity>
           </View>
 
-          <TouchableOpacity  onPress={() => navigation.navigate("PaymentScreen")}
-          style={styles.button}>
+          <TouchableOpacity
+             onPress={handlePlaceOrder}
+            style={styles.button}
+          >
             <Text style={styles.buttonText}>PLACE ORDER</Text>
           </TouchableOpacity>
 

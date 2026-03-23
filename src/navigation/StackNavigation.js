@@ -27,6 +27,12 @@ import EditCartScreen from "../screens/appScreen/EditCartScreen.js";
 import MyOrderScreen from "../screens/appScreen/MyOrderScreen.js";
 import MyCartScreen from "../screens/appScreen/MyCartScreen.js";
 import PaymentScreen from "../screens/appScreen/PaymentScreen.js";
+import AddCardScreen from "../screens/appScreen/AddCardScreen.js";
+import PaymentSuccessfully from "../screens/appScreen/PaymentSuccessfully.js";
+import TrackingOrder from "../screens/appScreen/TrackingOrder.js";
+import CallScreen from "../screens/appScreen/CallScreen.js";
+import MessageScreen  from "../screens/appScreen/MessageScreen.js";
+
 
 const Stack = createNativeStackNavigator();
 
@@ -61,9 +67,13 @@ const StackNavigation = () => {
       <Stack.Screen name="EditCartScreen" component={EditCartScreen} />
       <Stack.Screen name="MyOrderScreen" component={MyOrderScreen} />
       <Stack.Screen name="MyCartScreen" component={MyCartScreen} />
-    
+
       <Stack.Screen name="PaymentScreen" component={PaymentScreen} />
-    
+      <Stack.Screen name="AddCardScreen" component={AddCardScreen} />
+      <Stack.Screen name="PaymentSuccessfully" component={PaymentSuccessfully} />
+      <Stack.Screen name="TrackingOrder" component={TrackingOrder} />
+      <Stack.Screen name="CallScreen" component={CallScreen} />
+      <Stack.Screen name="MessageScreen" component={MessageScreen} />
 
 
       <Stack.Screen name="MainApp" component={DrawerNavigation} />

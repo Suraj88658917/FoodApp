@@ -24,6 +24,8 @@ const ProfileScreen = ({ navigation , route}) => {
   const [email, setEmail] = useState("");
 const [phone, setPhone] = useState("");
 
+console.log("ProfileScreen loaded")
+
  useEffect(() => {
   if (route?.params?.name) setName(route.params.name);
   if (route?.params?.image) setImage(route.params.image);

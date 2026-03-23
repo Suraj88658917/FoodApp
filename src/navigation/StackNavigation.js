@@ -22,7 +22,11 @@ import EditScreen from "../screens/appScreen/EditScreen.js";
 import ProfileScreen from "../screens/appScreen/ProfileScreen.js";
 import AddressScreen from "../screens/appScreen/AddressScreen.js";
 import ADDaddress from "../screens/appScreen/ADDaddress.js";
-import ReviewsScreen from  "../screens/appScreen/ReviewsScreen.js";
+import ReviewsScreen from "../screens/appScreen/ReviewsScreen.js";
+import EditCartScreen from "../screens/appScreen/EditCartScreen.js";
+import MyOrderScreen from "../screens/appScreen/MyOrderScreen.js";
+import MyCartScreen from "../screens/appScreen/MyCartScreen.js";
+import PaymentScreen from "../screens/appScreen/PaymentScreen.js";
 
 const Stack = createNativeStackNavigator();
 
@@ -54,6 +58,13 @@ const StackNavigation = () => {
       <Stack.Screen name="ADDaddress" component={ADDaddress} />
 
       <Stack.Screen name="ReviewsScreen" component={ReviewsScreen} />
+      <Stack.Screen name="EditCartScreen" component={EditCartScreen} />
+      <Stack.Screen name="MyOrderScreen" component={MyOrderScreen} />
+      <Stack.Screen name="MyCartScreen" component={MyCartScreen} />
+    
+      <Stack.Screen name="PaymentScreen" component={PaymentScreen} />
+    
+
 
       <Stack.Screen name="MainApp" component={DrawerNavigation} />
 

@@ -14,6 +14,7 @@ import Payment from "../../assets/image/Payment.svg";
 import User from "../../assets/image/User.svg";
 import Address from "../../assets/image/Address.svg";
 import Logout from "../../assets/image/Logout.svg";
+import Orderhistory from "../../assets/image/order-history.svg";
 
 
 const ProfileScreen = ({ navigation , route}) => {
@@ -109,7 +110,7 @@ const [phone, setPhone] = useState("");
 
         <TouchableOpacity
           style={styles.drawerRow}
-          // onPress={() => navigation.navigate()}
+          onPress={() => navigation.navigate("MyCartScreen")}
         >
           <View style={styles.leftRow}>
             <Cart1 width={40} height={40} />
@@ -120,6 +121,21 @@ const [phone, setPhone] = useState("");
         </TouchableOpacity>
 
         <TouchableOpacity
+          style={styles.drawerRow}
+          onPress={() => navigation.navigate("MyOrderScreen")}
+        >
+          <View style={styles.leftRow1}>
+           <View style={{backgroundColor:"#ffffff" ,paddingHorizontal:13 , paddingVertical:10 , borderRadius:20 ,}}>
+             <Orderhistory width={20} height={20} />
+           </View>
+            <Text style={styles.label}>My Order</Text>
+          </View>
+
+          <Arrow width={18} height={18} />
+        </TouchableOpacity>
+
+        <TouchableOpacity
+
           style={styles.drawerRow}
           // onPress={() => navigation.navigate()}
         >
@@ -285,6 +301,11 @@ const styles = StyleSheet.create({
   leftRow: {
     flexDirection: "row",
     alignItems: "center",
+  },
+   leftRow1: {
+    flexDirection: "row",
+    alignItems: "center",
+  
   },
 
   label: {

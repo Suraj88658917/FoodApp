@@ -10,25 +10,25 @@ const data = [
     id: "1",
     image: require("../../assets/image/Rectangle.svg"),
     title: "All your favorites",
-    subtitle: "Get all your loved foods in one place",
+    subtitle: "Get all your loved foods in one once place,\n you just place the orer we do the rest"
   },
   {
     id: "2",
     image: require("../../assets/image/Rectangle.svg"),
     title: "All your favorites",
-    subtitle: "Get all your loved foods in one place",
+    subtitle: "Get all your loved foods in one once place,\n you just place the orer we do the rest"
   },
   {
     id: "3",
     image: require("../../assets/image/Rectangle.svg"),
     title: "Order from chosen chef",
-    subtitle: "Get all your loved foods in one place",
+    subtitle: "Get all your loved foods in one once place,\n you just place the orer we do the rest"
   },
   {
     id: "4",
     image: require("../../assets/image/Rectangle.svg"),
     title: "Free delivery offers",
-    subtitle: "Get all your loved foods in one place",
+    subtitle:  "Get all your loved foods in one once place,\n you just place the orer we do the rest"
   },
 ];
 
@@ -126,13 +126,15 @@ const Onboarding = ({ navigation }) => {
         ) : (
 
           <>
-            <TouchableOpacity style={styles.button} onPress={onNext}>
+          <View style={{justifyContent:"center" , alignItems:"center" , }}>
+              <TouchableOpacity style={styles.button} onPress={onNext}>
               <Text style={styles.buttonText}>Next</Text>
             </TouchableOpacity>
 
             <TouchableOpacity onPress={SkipOnbording}>
               <Text style={styles.skip}>Skip</Text>
             </TouchableOpacity>
+          </View>
           </>
 
         )}
@@ -150,25 +152,26 @@ export default Onboarding;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor:"#fff"
 
   },
 
   slide: {
     width,
     alignItems: "center",
-    marginTop: 114
+    marginTop: 119
   },
 
   image: {
-    width: 240,
-    height: 292,
-    marginBottom: 50,
+    width: 280,
+    height: 350,
+    marginBottom: 70,
     backgroundColor: "#98A8B8",
     borderRadius: 12,
   },
 
   title: {
-    fontSize: 21,
+    fontSize: 24,
     textAlign: "center",
     marginBottom: 17,
     fontFamily: "Sen-Bold",
@@ -176,25 +179,27 @@ const styles = StyleSheet.create({
   },
 
   desc: {
-    fontSize: 14,
+    fontSize: 18,
     textAlign: "center",
     color: "#32343E",
     lineHeight: 20,
     fontFamily: "Sen-Regular",
+  
+
   },
 
   pagination: {
     flexDirection: "row",
     justifyContent: "center",
     position: "absolute",
-    bottom: 250,
+    bottom: 240,
     width: "100%",
   },
 
   dot: {
-    width: 8,
-    height: 8,
-    borderRadius: 4,
+    width: 10,
+    height: 10,
+    borderRadius: 5,
     backgroundColor: "#ebd399",
     marginHorizontal: 4,
   },
@@ -206,7 +211,7 @@ const styles = StyleSheet.create({
 
   buttonContainer: {
     position: "absolute",
-    bottom: 100,
+    bottom: 60,
     alignItems: "center",
     width: "100%",
   },
@@ -220,21 +225,21 @@ const styles = StyleSheet.create({
 
   skip: {
     fontSize: 16,
-    color: "#a39595",
+    color: "#605b5b",
     marginTop: 20,
     fontFamily: "Sen-Regular",
   },
 
   button: {
     backgroundColor: "#FF7622",
-    paddingVertical: 16,
-    paddingHorizontal: 130,
+    paddingVertical: 20,
+    paddingHorizontal: 168,
     borderRadius: 12,
   },
   button1: {
     backgroundColor: "#FF7622",
-    paddingVertical: 16,
-    paddingHorizontal: 110,
+    paddingVertical: 20,
+    paddingHorizontal: 145,
     borderRadius: 12,
   },
 

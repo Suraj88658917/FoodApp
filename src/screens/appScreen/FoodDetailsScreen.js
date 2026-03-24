@@ -62,7 +62,7 @@ const FoodDetailsScreen = ({ navigation }) => {
 
       <ScrollView showsVerticalScrollIndicator={false}>
 
-        <View style={{ justifyContent: "center", alignItems: "center", marginTop: 40 }}>
+        <View style={{ justifyContent: "center", alignItems: "center", marginTop: 20  , }}>
           <DBox width={357} height={200} />
         </View>
 
@@ -146,7 +146,7 @@ const FoodDetailsScreen = ({ navigation }) => {
           </Text>
         </View>
 
-        <View style={{ flexDirection: "row", padding: 10, gap: 20, paddingHorizontal: 20 }}>
+        <View style={{ flexDirection: "row", padding: 10, gap: 20, }}>
           <TouchableOpacity><Dicon1 width={50} height={84} /></TouchableOpacity>
           <TouchableOpacity><Dicon2 width={50} height={84} /></TouchableOpacity>
           <TouchableOpacity><Dicon3 width={50} height={84} /></TouchableOpacity>
@@ -162,7 +162,9 @@ const FoodDetailsScreen = ({ navigation }) => {
 
           <View style={styles.counterContainer}>
 
-            <DBox1 width={375} height={184} />
+           <View>
+             <DBox1 width={375} height={184} />
+           </View>
 
             <Text style={styles.price}>${totalPrice}</Text>
 
@@ -228,7 +230,7 @@ const styles = StyleSheet.create({
 
   saveBtn: {
     position: "absolute",
-    top: 190,
+    top: 170,
     right: 28,
   },
 
@@ -358,9 +360,9 @@ const styles = StyleSheet.create({
   },
 
   counterContainer:{
-  marginTop:-10,
   justifyContent:"center",
   alignItems:"center",
+ 
 },
 
   qty: {

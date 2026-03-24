@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Linking } from "react-native";
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Linking, KeyboardAvoidingView, Platform, ScrollView } from "react-native";
 import Card from "../../assets/image/WhiteBG.svg";
 import CheckBox from "@react-native-community/checkbox";
 import Ionicons from "react-native-vector-icons/Ionicons";
@@ -22,7 +22,7 @@ const LoginScreen = ({ navigation }) => {
       return;
     }
 
-      // Save data in MMKV
+    // Save data in MMKV
     storage.set("isLoggedIn", true);
     storage.set("userEmail", email);
 
@@ -38,142 +38,153 @@ const LoginScreen = ({ navigation }) => {
   };
 
   return (
-    <View style={styles.container}>
+    <ScrollView
+      contentContainerStyle={{ flexGrow: 1 }}
+      keyboardShouldPersistTaps="handled"
+    >
+      <KeyboardAvoidingView
+        style={styles.container}
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+      >
 
-      <View style={styles.titleContainer}>
-        <Text style={styles.title}>Log In</Text>
-      </View>
+        <View style={styles.titleContainer}>
+          <Text style={styles.title}>Log In</Text>
+        </View>
 
-      <View style={styles.subtitleContainer}>
-        <Text style={styles.subtitle}>
-          Please sign in to your existing account
-        </Text>
-      </View>
+        <View style={styles.subtitleContainer}>
+          <Text style={styles.subtitle}>
+            Please sign in to your existing account
+          </Text>
+        </View>
 
-      <View style={styles.cardContainer}>
+        <View style={styles.cardContainer}>
 
-        <Card width={"100%"} height={730} />
+          <Card width={"100%"} height={730} />
 
-        <View style={styles.form}>
+          <View style={styles.form}>
 
-          <Text style={styles.label}>EMAIL</Text>
+            <Text style={styles.label}>EMAIL</Text>
 
-          <TextInput
-            placeholder="example@gmail.com"
-            placeholderTextColor="#7E8A97"
-            value={email}
-            onChangeText={setEmail}
-            style={styles.input}
-            keyboardType="email-address"
-            autoCapitalize="none"
+            <View>
+              <TextInput
+                placeholder="example@gmail.com"
+                placeholderTextColor="#7E8A97"
+                value={email}
+                onChangeText={setEmail}
+                style={styles.input}
+                keyboardType="email-address"
+                autoCapitalize="none"
 
-          />
-
-          <Text style={styles.label}>PASSWORD</Text>
-
-          <View style={styles.passwordContainer}>
-
-            <TextInput
-              placeholder="* * * * * * * * * *"
-              placeholderTextColor="#7E8A97"
-              value={password}
-              onChangeText={setPassword}
-              secureTextEntry={!showPassword}
-              style={styles.passwordInput}
-            />
-
-            <TouchableOpacity
-              onPress={() => setShowPassword(!showPassword)}
-              style={styles.eyeIcon}
-            >
-              <Ionicons
-                name={showPassword ? "eye" : "eye-off"}
-                size={22}
-                color="#777"
               />
-            </TouchableOpacity>
+            </View>
 
-          </View>
+            <Text style={styles.label}>PASSWORD</Text>
 
-          <View style={styles.row}>
+            <View style={styles.passwordContainer}>
 
-            <View style={styles.rememberContainer}>
-
-              <CheckBox
-                value={remember}
-                onValueChange={setRemember}
-                tintColors={{ true: "#FF7622", false: "#ccc" }}
-                style={styles.CheckBox}
+              <TextInput
+                placeholder="*  *  *  *  *  *  *  *  *  *"
+                placeholderTextColor="#7E8A97"
+                value={password}
+                onChangeText={setPassword}
+                secureTextEntry={!showPassword}
+                style={styles.passwordInput}
               />
 
-              <Text style={styles.remember}>Remember me</Text>
+              <TouchableOpacity
+                onPress={() => setShowPassword(!showPassword)}
+                style={styles.eyeIcon}
+              >
+                <Ionicons
+                  name={showPassword ? "eye" : "eye-off"}
+                  size={22}
+                  color="#777"
+                />
+              </TouchableOpacity>
+
+            </View>
+
+            <View style={styles.row}>
+
+              <View style={styles.rememberContainer}>
+
+                <CheckBox
+                  value={remember}
+                  onValueChange={setRemember}
+                  tintColors={{ true: "#FF7622", false: "#ccc" }}
+                  style={styles.CheckBox}
+                />
+
+                <Text style={styles.remember}>Remember me</Text>
+
+              </View>
+
+              <TouchableOpacity
+                onPress={() => navigation.navigate("ForgotPasswordScreen")}
+              >
+                <Text style={styles.forgot}>Forgot password</Text>
+              </TouchableOpacity>
 
             </View>
 
             <TouchableOpacity
-              onPress={() => navigation.navigate("ForgotPasswordScreen")}
+              style={styles.button}
+              onPress={handleLogin}
             >
-              <Text style={styles.forgot}>Forgot password</Text>
+              <Text style={styles.buttonText}>LOG IN</Text>
             </TouchableOpacity>
 
-          </View>
+            <View style={styles.signupRow}>
 
-          <TouchableOpacity
-            style={styles.button}
-            onPress={handleLogin}
-          >
-            <Text style={styles.buttonText}>LOG IN</Text>
-          </TouchableOpacity>
+              <Text style={styles.accountText}>
+                Don't have an account?
+              </Text>
 
-          <View style={styles.signupRow}>
+              <TouchableOpacity
+                onPress={() => navigation.navigate("RegisterScreen")}
+              >
+                <Text style={styles.accountText1}> SIGN UP</Text>
+              </TouchableOpacity>
 
-            <Text style={styles.accountText}>
-              Don't have an account?
-            </Text>
+            </View>
 
-            <TouchableOpacity
-              onPress={() => navigation.navigate("RegisterScreen")}
+            <View style={{ justifyContent: "center", alignItems: "center", marginTop: 40 }}>
+              <Text style={{ fontSize: 16, fontFamily: "Sen-Regular", lineHeight: "100%", color: "#7E8A97" }}>Or</Text>
+            </View>
+
+
+
+            <View
+              style={{
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "center",
+                padding: 10,
+                gap: 30,
+                marginTop: 5
+              }}
             >
-              <Text style={styles.accountText1}> SIGN UP</Text>
-            </TouchableOpacity>
 
-          </View>
+              <TouchableOpacity onPress={() => openLink("https://www.facebook.com")}>
+                <Facebook width={60} height={62} />
+              </TouchableOpacity>
 
-          <View style={{ justifyContent: "center", alignItems: "center", marginTop: 40 }}>
-            <Text style={{ fontSize: 16, fontFamily: "Sen-Regular", lineHeight: "100%", color: "#7E8A97" }}>Or</Text>
-          </View>
+              <TouchableOpacity onPress={() => openLink("https://twitter.com")}>
+                <Twitter width={60} height={62} />
+              </TouchableOpacity>
 
+              <TouchableOpacity onPress={() => openLink("https://www.apple.com")}>
+                <Apple width={60} height={62} />
+              </TouchableOpacity>
 
-
-          <View
-            style={{
-              flexDirection: "row",
-              alignItems: "center",
-              justifyContent: "center",
-              padding: 10,
-              gap: 30
-            }}
-          >
-
-            <TouchableOpacity onPress={() => openLink("https://www.facebook.com")}>
-              <Facebook width={60} height={62} />
-            </TouchableOpacity>
-
-            <TouchableOpacity onPress={() => openLink("https://twitter.com")}>
-              <Twitter width={60} height={62} />
-            </TouchableOpacity>
-
-            <TouchableOpacity onPress={() => openLink("https://www.apple.com")}>
-              <Apple width={60} height={62} />
-            </TouchableOpacity>
+            </View>
 
           </View>
 
         </View>
 
-      </View>
-
-    </View>
+      </KeyboardAvoidingView>
+    </ScrollView>
   );
 };
 
@@ -213,15 +224,16 @@ const styles = StyleSheet.create({
 
   cardContainer: {
     position: "absolute",
-    top: 180,
+    top: 230,
     width: "100%",
-    alignItems: "center"
+    alignItems: "center",
   },
 
   form: {
     position: "absolute",
-    width: "85%",
-    top: 60
+    width: "100%",
+    top: 50,
+    paddingHorizontal: 15
   },
 
   label: {
@@ -230,17 +242,20 @@ const styles = StyleSheet.create({
     marginTop: 20,
     marginBottom: 6,
     fontFamily: "Sen-Regular",
-    width: 70,
+    width: 75,
     height: 16
 
   },
 
   input: {
-    height: 58,
+    height: 60,
     backgroundColor: "#F0F5FA",
     borderRadius: 12,
     paddingHorizontal: 16,
-    fontSize: 14
+    fontSize: 14,
+    marginTop: 5,
+    width: 380,
+
   },
 
   passwordContainer: {

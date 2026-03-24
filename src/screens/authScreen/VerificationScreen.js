@@ -120,13 +120,13 @@ const VerificationScreen = ({ navigation }) => {
           {/* Label + Timer */}
           <View style={styles.row}>
 
-            <Text style={styles.label}>ENTER CODE</Text>
+            <Text style={styles.label}>CODE</Text>
 
             {timer > 0 ? (
               <Text style={styles.timer}>Resend in {timer}s</Text>
             ) : (
               <TouchableOpacity onPress={resendCode}>
-                <Text style={styles.resend}>Resend Code</Text>
+                <Text style={styles.resend}>Resend in .50sec</Text>
               </TouchableOpacity>
             )}
 
@@ -192,7 +192,7 @@ const styles = StyleSheet.create({
   titleContainer: {
     position: "absolute",
     top: 118,
-    left: 100,
+    left: 119,
   },
 
   title: {
@@ -203,13 +203,16 @@ const styles = StyleSheet.create({
 
   subtitleContainer: {
     position: "absolute",
-    top: 157,
-    left: 50
+    top: 159,
+    left: 70
   },
   subtitleContainer1: {
     position: "absolute",
     top: 187,
-    left: 120
+    left: 109,
+    justifyContent:"center",
+    width:200,
+    alignItems:"center"
   },
 
   subtitle: {
@@ -219,23 +222,24 @@ const styles = StyleSheet.create({
     lineHeight: 26
   },
    subtitle1: {
-    color: "#f0e7e7",
+    color: "#ffffff",
     fontSize: 16,
-    fontFamily: "Sen-Regular",
+    fontFamily: "Sen-Bold",
     lineHeight: 26
   },
 
   cardContainer: {
     position: "absolute",
-    top: 180,
+    top: 230,
     width: "100%",
     alignItems: "center"
   },
 
   form: {
     position: "absolute",
-    width: "85%",
-    top: 60
+    width: "100%",
+    top: 60,
+    paddingHorizontal:18
   },
 
   row: {
@@ -272,7 +276,7 @@ const styles = StyleSheet.create({
   },
 
   resend: {
-    color: "#FF7622",
+    color: "#000000",
     fontSize: 14,
     fontFamily: "Sen-Bold"
   },
@@ -284,6 +288,8 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     justifyContent: "center",
     alignItems: "center",
+    width:"100%"
+  
   },
 
   buttonText: {

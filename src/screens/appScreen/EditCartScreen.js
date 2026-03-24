@@ -165,7 +165,7 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: "row",
     alignItems: "center",
-    marginTop: 60,
+    marginTop: 40,
     paddingHorizontal: 20
   },
 
@@ -278,7 +278,8 @@ const styles = StyleSheet.create({
   form: {
     position: "absolute",
     top: 70,
-    width: "85%"
+    width: "100%",
+    paddingHorizontal:15
   },
 
   sectionHeader: {

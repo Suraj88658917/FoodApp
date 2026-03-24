@@ -53,7 +53,8 @@ const ForgotPasswordScreen = ({ navigation }) => {
 
           <Text style={styles.label}>EMAIL</Text>
 
-          <TextInput
+         <View>
+           <TextInput
             placeholder="example@gmail.com"
             placeholderTextColor="#7E8A97"
             value={email}
@@ -62,6 +63,7 @@ const ForgotPasswordScreen = ({ navigation }) => {
             keyboardType="email-address"
             autoCapitalize="none"
           />
+         </View>
 
           <TouchableOpacity
             style={styles.button}
@@ -127,22 +129,23 @@ const styles = StyleSheet.create({
 
   cardContainer: {
     position: "absolute",
-    top: 180,
+    top: 230,
     width: "100%",
     alignItems: "center"
   },
 
   form: {
     position: "absolute",
-    width: "85%",
-    top: 60
+    width: "100%",
+    top: 60,
+    paddingHorizontal:15
   },
 
   label: {
     fontSize: 13,
     color: "#000000",
-    marginTop: 20,
-    marginBottom: 6,
+    marginTop: 25,
+    marginBottom: 10,
     fontFamily: "Sen-Regular"
   },
 
@@ -151,7 +154,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#F0F5FA",
     borderRadius: 12,
     paddingHorizontal: 16,
-    fontSize: 14
+    fontSize: 14,
+    
   },
 
   button: {

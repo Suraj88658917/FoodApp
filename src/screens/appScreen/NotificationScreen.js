@@ -108,7 +108,7 @@ const NotificationScreen = ({ navigation }) => {
         showsHorizontalScrollIndicator={false}
         keyExtractor={(item) => item.id}
         renderItem={renderCategory}
-        contentContainerStyle={{ paddingHorizontal: 20 }}
+        contentContainerStyle={{ paddingHorizontal: 10 }}
       />
      </View>
 

@@ -50,9 +50,11 @@ console.log("ProfileScreen loaded")
           <Text style={styles.title}>Profile</Text>
         </View>
 
-        <TouchableOpacity style={styles.iconButton}>
+       <View style={{ marginRight:10}}>
+         <TouchableOpacity style={styles.iconButton}>
           <PFilter width={20} height={20} />
         </TouchableOpacity>
+       </View>
       </View>
 
       <ScrollView 
@@ -248,6 +250,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingHorizontal: 20,
     marginTop: 60,
+    justifyContent:"space-between",
   },
 
   iconButton: {

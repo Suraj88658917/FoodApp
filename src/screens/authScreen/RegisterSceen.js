@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from "react-native";
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, KeyboardAvoidingView, Platform, ScrollView } from "react-native";
 import Card from "../../assets/image/WhiteBG.svg";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import Back from "../../assets/image/back.svg";
@@ -46,7 +46,15 @@ const RegisterScreen = ({ navigation }) => {
   };
 
   return (
-    <View style={styles.container}>
+
+    <KeyboardAvoidingView
+      style={styles.container}
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+    >
+      <ScrollView
+        contentContainerStyle={{ flexGrow: 1 }}
+        keyboardShouldPersistTaps="handled"
+      >
 
       <TouchableOpacity
         style={styles.backButton}
@@ -73,17 +81,20 @@ const RegisterScreen = ({ navigation }) => {
 
           <Text style={styles.label}>NAME</Text>
 
-          <TextInput
+         <View>
+           <TextInput
             placeholder="Enter your name"
             placeholderTextColor="#7E8A97"
             value={name}
             onChangeText={setName}
             style={styles.input}
           />
+         </View>
 
           <Text style={styles.label}>EMAIL</Text>
 
-          <TextInput
+         <View>
+           <TextInput
             placeholder="example@gmail.com"
             placeholderTextColor="#7E8A97"
             value={email}
@@ -92,13 +103,14 @@ const RegisterScreen = ({ navigation }) => {
             keyboardType="email-address"
             autoCapitalize="none"
           />
+         </View>
 
           <Text style={styles.label}>PASSWORD</Text>
 
           <View style={styles.passwordContainer}>
 
             <TextInput
-              placeholder="********"
+              placeholder="*  *  *  *  *  *  *  *"
               placeholderTextColor="#7E8A97"
               value={password}
               onChangeText={setPassword}
@@ -124,7 +136,7 @@ const RegisterScreen = ({ navigation }) => {
           <View style={styles.passwordContainer}>
 
             <TextInput
-              placeholder="********"
+              placeholder="*  *  *  *  *  *  *  *"
               placeholderTextColor="#7E8A97"
               value={confirmPassword}
               onChangeText={setConfirmPassword}
@@ -163,8 +175,9 @@ const RegisterScreen = ({ navigation }) => {
         </View>
 
       </View>
-
-    </View>
+    </ScrollView>
+      </KeyboardAvoidingView >
+    
   );
 };
 
@@ -217,15 +230,16 @@ const styles = StyleSheet.create({
 
   cardContainer: {
     position: "absolute",
-    top: 180,
+    top: 230,
     width: "100%",
     alignItems: "center"
   },
 
   form: {
     position: "absolute",
-    width: "85%",
-    top: 60
+    width: "100%",
+    top: 60,
+    paddingHorizontal: 15
   },
 
   label: {

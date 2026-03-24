@@ -175,7 +175,7 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: "row",
     alignItems: "center",
-    marginTop: 60,
+    marginTop: 40,
     paddingHorizontal: 20
   },
 
@@ -259,13 +259,14 @@ const styles = StyleSheet.create({
 
   cardContainer: {
     alignItems: "center",
-    marginTop: 110
+    marginTop: 120
   },
 
   form: {
     position: "absolute",
     top: 60,
-    width: "85%"
+    width: "100%",
+    paddingHorizontal:15
   },
 
   sectionHeader: {

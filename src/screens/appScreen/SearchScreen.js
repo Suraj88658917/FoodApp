@@ -15,7 +15,7 @@ const data = [
   {
     id: "1",
     title: "Burger",
-     screen: "BurgerScreen"
+    screen: "BurgerScreen"
   },
   {
     id: "2",
@@ -30,7 +30,7 @@ const data = [
   {
     id: "4",
     title: "Burger",
-     screen: "BurgerScreen"
+    screen: "BurgerScreen"
   },
   {
     id: "5",
@@ -40,7 +40,7 @@ const data = [
   {
     id: "6",
     title: "Burger",
-     screen: "BurgerScreen"
+    screen: "BurgerScreen"
   },
   {
     id: "7",
@@ -59,32 +59,32 @@ const SearchScreen = ({ navigation }) => {
 
   const [name, setName] = useState("");
 
-   console.log("SearchScreen Loaded");
+  console.log("SearchScreen Loaded");
 
   const renderItem = ({ item }) => {
-  return (
-    <View style={{ height: 70, justifyContent: "center" }}>
-      <TouchableOpacity onPress={() => navigation.navigate(item.screen)}>
-        <View
-          style={{
-            fontSize: 18,
-            padding: 10,
-            backgroundColor: "#fff",
-            borderRadius: 33,
-            borderColor: "#d5cece",
-            borderWidth: 1,
-            justifyContent: "center",
-            height: 40,
-            width: 94,
-            alignItems: "center",
-            marginLeft: 10,
-          }}>
-          <Text style={{ fontFamily: "Sen-Medium", fontSize: 16 }}>{item.title}</Text>
-        </View>
-      </TouchableOpacity>
-    </View>
-  )
-}
+    return (
+      <View style={{ height: 70, justifyContent: "center" }}>
+        <TouchableOpacity onPress={() => navigation.navigate(item.screen)}>
+          <View
+            style={{
+              fontSize: 18,
+              padding: 10,
+              backgroundColor: "#fff",
+              borderRadius: 33,
+              borderColor: "#d5cece",
+              borderWidth: 1,
+              justifyContent: "center",
+              height: 40,
+              width: 94,
+              alignItems: "center",
+              marginLeft: 10,
+            }}>
+            <Text style={{ fontFamily: "Sen-Medium", fontSize: 16 }}>{item.title}</Text>
+          </View>
+        </TouchableOpacity>
+      </View>
+    )
+  }
 
   return (
     <View style={styles.container}>
@@ -201,84 +201,84 @@ const SearchScreen = ({ navigation }) => {
           <Text style={{ fontSize: 20, fontFamily: "Sen-Regular" }}>Popular Fast Food</Text>
         </View>
 
-        <View style={{ flexDirection: "row", }}>
-        <TouchableOpacity>
+        <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
+          <TouchableOpacity>
             <View style={styles.card1}>
 
-            <Box width={122} height={84} style={styles.box} />
+              <Box width={122} height={84} style={styles.box} />
 
-            <WhiteBox
-              width={193}
-              height={102}
-              style={styles.whiteBox}
-            />
+              <WhiteBox
+                width={193}
+                height={102}
+                style={styles.whiteBox}
+              />
 
-            <View style={styles.textContainer}>
-              <Text style={styles.foodTitle}>European Pizza</Text>
-              <Text style={styles.subtitle}>Uttora Coffee House</Text>
+              <View style={styles.textContainer}>
+                <Text style={styles.foodTitle}>European Pizza</Text>
+                <Text style={styles.subtitle}>Uttora Coffee House</Text>
+              </View>
+
             </View>
+          </TouchableOpacity>
 
-          </View>
-        </TouchableOpacity>
+          <TouchableOpacity>
+            <View style={styles.card1}>
 
-         <TouchableOpacity>
-           <View style={styles.card1}>
+              <Box width={122} height={84} style={styles.box} />
 
-            <Box width={122} height={84} style={styles.box} />
+              <WhiteBox
+                width={193}
+                height={102}
+                style={styles.whiteBox}
+              />
 
-            <WhiteBox
-              width={193}
-              height={102}
-              style={styles.whiteBox}
-            />
+              <View style={styles.textContainer}>
+                <Text style={styles.foodTitle}>European Pizza</Text>
+                <Text style={styles.subtitle}>Uttora Coffee House</Text>
+              </View>
 
-            <View style={styles.textContainer}>
-              <Text style={styles.foodTitle}>European Pizza</Text>
-              <Text style={styles.subtitle}>Uttora Coffee House</Text>
             </View>
-
-          </View>
-         </TouchableOpacity>
+          </TouchableOpacity>
         </View>
 
-        <View style={{ flexDirection: "row", }}>
-         <TouchableOpacity>
-           <View style={styles.card1}>
+        <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
+          <TouchableOpacity>
+            <View style={styles.card1}>
 
-            <Box width={122} height={84} style={styles.box} />
+              <Box width={122} height={84} style={styles.box} />
 
-            <WhiteBox
-              width={193}
-              height={102}
-              style={styles.whiteBox}
-            />
+              <WhiteBox
+                width={193}
+                height={102}
+                style={styles.whiteBox}
+              />
 
-            <View style={styles.textContainer}>
-              <Text style={styles.foodTitle}>European Pizza</Text>
-              <Text style={styles.subtitle}>Uttora Coffee House</Text>
+              <View style={styles.textContainer}>
+                <Text style={styles.foodTitle}>European Pizza</Text>
+                <Text style={styles.subtitle}>Uttora Coffee House</Text>
+              </View>
+
             </View>
+          </TouchableOpacity>
 
-          </View>
-         </TouchableOpacity>
+          <TouchableOpacity>
+            <View style={styles.card1}>
 
-         <TouchableOpacity>
-           <View style={styles.card1}>
+              <Box width={122} height={84} style={styles.box} />
 
-            <Box width={122} height={84} style={styles.box} />
+              <WhiteBox
+                width={193}
+                height={102}
+                style={styles.whiteBox}
+              />
 
-            <WhiteBox
-              width={193}
-              height={102}
-              style={styles.whiteBox}
-            />
+              <View style={styles.textContainer}>
+                <Text style={styles.foodTitle}>European Pizza</Text>
+                <Text style={styles.subtitle}>Uttora Coffee House</Text>
+              </View>
 
-            <View style={styles.textContainer}>
-              <Text style={styles.foodTitle}>European Pizza</Text>
-              <Text style={styles.subtitle}>Uttora Coffee House</Text>
             </View>
-
-          </View>
-         </TouchableOpacity>
+          </TouchableOpacity>
         </View>
 
 
@@ -382,9 +382,9 @@ const styles = StyleSheet.create({
     position: "absolute",
     zIndex: 1,
     left: -1,
-    paddingHorizontal:90,
-    paddingVertical:90,
-    
+    paddingHorizontal: 90,
+    paddingVertical: 90,
+
   },
 
   textContainer: {

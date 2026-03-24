@@ -22,7 +22,7 @@ const TabNavigation = () => {
         headerShown: false,
         tabBarShowLabel: false,
         tabBarStyle: {
-          height: 110,  
+          height: 100,  
         },
       }}
       

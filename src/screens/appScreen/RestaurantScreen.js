@@ -356,13 +356,14 @@ const styles = StyleSheet.create({
 
   image: {
     width: width,
-    height: 321,
-    borderRadius: 20
+    height: 351,
+    borderRadius: 20,
+    marginBottom:10
   },
 
   dotContainer: {
     position: "absolute",
-    top: 270,
+    top: 320,
     alignSelf: "center",
     flexDirection: "row"
   },

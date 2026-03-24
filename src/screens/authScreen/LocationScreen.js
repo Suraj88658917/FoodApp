@@ -33,7 +33,9 @@ const LocationScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
 
-      <Rectangle style={styles.rectangle} />
+      <View style={{height:450 , justifyContent:"center" , alignItems:"center" , marginTop:90}}>
+        <Rectangle width={306} height={290} />
+      </View>
 
       <View style={styles.content}>
 
@@ -64,29 +66,22 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fbfbfb",
-    justifyContent: "flex-end",
-    alignItems: "center"
-  },
-
-  rectangle: {
-    width:206,
-    height:250,
-    position: "absolute",
-    top: 176,
-    borderRadius:90
+  
   },
 
   content: {
     alignItems: "center",
-    marginBottom: 170
+    marginBottom: 170,
+    width:"100%",
+    
   },
 
   button: {
     flexDirection: "row",
     alignItems: "center",
     backgroundColor: "#FF7622",
-    paddingVertical: 14,
-    paddingHorizontal: 60,
+    paddingVertical: 20,
+    paddingHorizontal: 110,
     borderRadius: 12,
   },
 
@@ -98,8 +93,8 @@ const styles = StyleSheet.create({
   },
 
   infoText: {
-    marginTop: 20,
-    fontSize: 13,
+    marginTop: 40,
+    fontSize: 18,
     fontFamily: "Sen-Regular",
     lineHeight: 24,
     textAlign: "center",

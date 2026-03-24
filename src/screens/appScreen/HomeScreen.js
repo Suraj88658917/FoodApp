@@ -5,7 +5,8 @@ import {
   TextInput,
   TouchableOpacity,
   FlatList,
-  Modal
+  Modal,
+  ScrollView
 } from "react-native";
 import React, { useState, useEffect } from "react";
 
@@ -72,7 +73,9 @@ const HomeScreen = ({ navigation }) => {
   const renderRestaurant = ({ item }) => (
     <View style={styles.restaurantCard}>
       <TouchableOpacity>
-        <Squarlarge width={350} height={170} />
+        <View>
+          <Squarlarge width={350} height={170} />
+        </View>
 
         <View style={{ marginTop: 8 }}>
           <Text style={styles.resTitle}>{item.title}</Text>
@@ -119,44 +122,44 @@ const HomeScreen = ({ navigation }) => {
       <View>
         <Modal transparent visible={showOffer} animationType="fade">
 
-        <View style={styles.modalContainer}>
+          <View style={styles.modalContainer}>
 
-          <LinearGradient
-            colors={["#FFEB34", "#E76F00"]}
-            start={{ x: 1, y: 0 }}
-            end={{ x: 1, y: 1 }}
-            style={styles.popup}
-          >
-
-            <TouchableOpacity
-              onPress={() => setShowOffer(false)}
-              style={styles.cutBtn}
+            <LinearGradient
+              colors={["#FFEB34", "#E76F00"]}
+              start={{ x: 1, y: 0 }}
+              end={{ x: 1, y: 1 }}
+              style={styles.popup}
             >
-              <Cut width={45} height={45} />
-            </TouchableOpacity>
 
-            <Text style={styles.title1}>Hurry Offers!</Text>
+              <TouchableOpacity
+                onPress={() => setShowOffer(false)}
+                style={styles.cutBtn}
+              >
+                <Cut width={45} height={45} />
+              </TouchableOpacity>
 
-            <Elements width={250} height={170} style={styles.Elements} />
+              <Text style={styles.title1}>Hurry Offers!</Text>
 
-            <Text style={styles.message}>#1243CD2</Text>
+              <Elements width={250} height={170} style={styles.Elements} />
 
-            <Text style={styles.desc}>
-              Use the coupon get 25% discount
-            </Text>
+              <Text style={styles.message}>#1243CD2</Text>
 
-            <TouchableOpacity
-              style={styles.closeBtn}
-              onPress={() => setShowOffer(false)}
-            >
-              <Text style={styles.btnText}>GOT IT</Text>
-            </TouchableOpacity>
+              <Text style={styles.desc}>
+                Use the coupon get 25% discount
+              </Text>
 
-          </LinearGradient>
+              <TouchableOpacity
+                style={styles.closeBtn}
+                onPress={() => setShowOffer(false)}
+              >
+                <Text style={styles.btnText}>GOT IT</Text>
+              </TouchableOpacity>
 
-        </View>
+            </LinearGradient>
 
-      </Modal>
+          </View>
+
+        </Modal>
       </View>
 
 
@@ -166,62 +169,69 @@ const HomeScreen = ({ navigation }) => {
       </View>
 
 
-     <View>
-       <FlatList
-        data={restaurants}
-        keyExtractor={(item) => item.id}
-        renderItem={renderRestaurant}
+      <ScrollView
         showsVerticalScrollIndicator={false}
+      >
+        <FlatList
+          data={restaurants}
+          keyExtractor={(item) => item.id}
+          renderItem={renderRestaurant}
+          showsVerticalScrollIndicator={false}
 
-        ListHeaderComponent={
-          <>
+          ListHeaderComponent={
+            <>
 
-            <TouchableOpacity onPress={() => navigation.navigate("SearchScreen")}>
-              <View style={styles.searchContainer}>
-                <TextInput
-                  placeholder="Search dishes, restaurants"
-                  placeholderTextColor="#6d6e70"
-                  value={name}
-                  onChangeText={setName}
-                  style={styles.input}
-                />
-                <Search1 style={styles.Search1} />
+              <TouchableOpacity activeOpacity={1}>
+                <View style={styles.searchContainer}>
+
+                  <TextInput
+                    placeholder="Search dishes, restaurants"
+                    placeholderTextColor="#6d6e70"
+                    value={name}
+                    onChangeText={setName}
+                    style={styles.input}
+
+                    onFocus={() => navigation.navigate("SearchScreen")}
+                  />
+
+                  <Search1 style={styles.Search1} />
+
+                </View>
+              </TouchableOpacity>
+
+              <View style={styles.headerRow}>
+                <Text style={styles.headerText}>All Categories</Text>
+
+                <TouchableOpacity style={{ flexDirection: "row", alignItems: "center" }}>
+                  <Text style={{ marginRight: 5 }}>See All</Text>
+                  <Vector1 width={6} height={10} />
+                </TouchableOpacity>
               </View>
-            </TouchableOpacity>
 
-            <View style={styles.headerRow}>
-              <Text style={styles.headerText}>All Categories</Text>
+              <View>
+                <FlatList
+                  data={categories}
+                  renderItem={renderCategory}
+                  horizontal
+                  keyExtractor={(item) => item.id}
+                  showsHorizontalScrollIndicator={false}
+                />
 
-              <TouchableOpacity style={{ flexDirection: "row", alignItems: "center" }}>
-                <Text style={{ marginRight: 5 }}>See All</Text>
-                <Vector1 width={6} height={10} />
-              </TouchableOpacity>
-            </View>
+              </View>
+              <View style={styles.headerRow2}>
+                <Text style={styles.headerText}>Open Restaurants</Text>
 
-           <View>
-             <FlatList
-              data={categories}
-              renderItem={renderCategory}
-              horizontal
-              keyExtractor={(item) => item.id}
-              showsHorizontalScrollIndicator={false}
-            />
+                <TouchableOpacity style={{ flexDirection: "row", alignItems: "center" }}>
+                  <Text style={{ marginRight: 5 }}>See All</Text>
+                  <Vector1 width={6} height={10} />
+                </TouchableOpacity>
+              </View>
 
-           </View>
-            <View style={styles.headerRow2}>
-              <Text style={styles.headerText}>Open Restaurants</Text>
+            </>
+          }
 
-              <TouchableOpacity style={{ flexDirection: "row", alignItems: "center" }}>
-                <Text style={{ marginRight: 5 }}>See All</Text>
-                <Vector1 width={6} height={10} />
-              </TouchableOpacity>
-            </View>
-
-          </>
-        }
-
-      />
-     </View>
+        />
+      </ScrollView>
 
     </View>
   );
@@ -241,7 +251,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    marginTop:60
+    marginTop: 60
   },
 
   deliver: {
@@ -302,11 +312,11 @@ const styles = StyleSheet.create({
   },
 
   headerRow2: {
-  flexDirection: "row",
-  justifyContent: "space-between",
-  alignItems: "center",
-  marginTop: 20
-},
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginTop: 20
+  },
   headerText: {
     fontSize: 19,
     fontFamily: "Sen-Regular"
@@ -331,22 +341,25 @@ const styles = StyleSheet.create({
   },
 
   restaurantCard: {
-    marginTop: 15
+    marginTop: 15,
+    width: "100%",
+    justifyContent: "center",
+    alignItems: "center"
   },
 
   resTitle: {
     fontSize: 18,
-    fontFamily: "Sen-Bold"
+    fontFamily: "Sen-Bold",
   },
 
   resSub: {
-    fontSize: 14,
+    fontSize: 15,
     color: "#8e8e8e"
   },
 
   iconRow: {
     flexDirection: "row",
-    gap: 15,
+    gap: 30,
     marginTop: 8
   },
 
@@ -358,11 +371,12 @@ const styles = StyleSheet.create({
   },
 
   popup: {
-    width: 327,
-    height: 395,
+    width: "90%",
+    height: 400,
     padding: 20,
     borderRadius: 30,
-    alignItems: "center"
+    alignItems: "center",
+
   },
 
   cutBtn: {

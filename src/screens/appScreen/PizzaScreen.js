@@ -279,6 +279,7 @@ const styles = StyleSheet.create({
     height: 160,
     alignItems: "center",
     marginBottom: 20,
+    justifyContent:"space-between"
   },
 
   box: {
@@ -329,7 +330,9 @@ const styles = StyleSheet.create({
 
   restaurantCard: {
     marginTop: 10,
-    paddingHorizontal: 20
+    paddingHorizontal: 20,
+    justifyContent:"center",
+    alignItems:"center"
   },
 
   resTitle: {

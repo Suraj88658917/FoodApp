@@ -174,7 +174,7 @@ const styles = StyleSheet.create({
   },
 
   form: {
-    marginTop: 40,
+    marginTop: 20,
     paddingHorizontal: 20
   },
 
@@ -197,7 +197,7 @@ const styles = StyleSheet.create({
    input1: {
     backgroundColor: "#F6F8FA",
     borderRadius: 10,
-    paddingVertical: 60,
+    paddingVertical: 40,
     paddingHorizontal: 15,
     marginBottom: 20,
     fontFamily:"Sen-Regular",

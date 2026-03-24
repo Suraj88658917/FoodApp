@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, TouchableOpacity, Modal, ScrollView } from 'react-native'
+import { StyleSheet, Text, View, TouchableOpacity, Modal, ScrollView ,  TouchableWithoutFeedback  } from 'react-native'
 import React, { useState } from 'react'
 
 import Back1 from "../../assets/image/back.svg";
@@ -125,45 +125,51 @@ const BurgerScreen = ({ navigation }) => {
 
       <Modal visible={modalVisible} transparent animationType="fade">
 
-        <View style={styles.modalOverlay}>
+  <TouchableWithoutFeedback onPress={() => setModalVisible(false)}>
+    <View style={styles.modalOverlay}>
 
-          <View style={styles.modalBox}>
+      {/* Stop closing when clicking inside box */}
+      <TouchableWithoutFeedback>
+        <View style={styles.modalBox}>
 
-            <TouchableOpacity
-              style={styles.modalItem}
-              onPress={() => {
-                setModalVisible(false)
-                navigation.navigate("BurgerScreen")
-              }}>
-              <Text style={styles.modalText}>Burger</Text>
-            </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.modalItem}
+            onPress={() => {
+              setModalVisible(false)
+              navigation.navigate("BurgerScreen")
+            }}>
+            <Text style={styles.modalText}>Burger</Text>
+          </TouchableOpacity>
 
-            <TouchableOpacity
-              style={styles.modalItem}
-              onPress={() => {
-                setModalVisible(false)
-                navigation.navigate("SandwichScreen")
-              }}>
-              <Text style={styles.modalText}>Sandwich</Text>
-            </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.modalItem}
+            onPress={() => {
+              setModalVisible(false)
+              navigation.navigate("SandwichScreen")
+            }}>
+            <Text style={styles.modalText}>Sandwich</Text>
+          </TouchableOpacity>
 
-            <TouchableOpacity
-              style={styles.modalItem}
-              onPress={() => {
-                setModalVisible(false)
-                navigation.navigate("PizzaScreen")
-              }}>
-              <Text style={styles.modalText}>Pizza</Text>
-            </TouchableOpacity>
-
-          </View>
+          <TouchableOpacity
+            style={styles.modalItem}
+            onPress={() => {
+              setModalVisible(false)
+              navigation.navigate("PizzaScreen")
+            }}>
+            <Text style={styles.modalText}>Pizza</Text>
+          </TouchableOpacity>
 
         </View>
+      </TouchableWithoutFeedback>
 
-      </Modal>
+    </View>
+  </TouchableWithoutFeedback>
+
+</Modal>
 
 
-      <ScrollView showsVerticalScrollIndicator={false}>
+      <ScrollView 
+      showsVerticalScrollIndicator={false}>
 
         <View style={{ paddingHorizontal: 20, marginTop: 10 }}>
           <Text style={{ fontSize: 20, fontFamily: "Sen-Regular" }}>
@@ -281,12 +287,14 @@ const styles = StyleSheet.create({
     height: 160,
     alignItems: "center",
     marginBottom: 20,
+    justifyContent:"space-between"
   },
 
   box: {
     position: "absolute",
     top: 0,
-    zIndex: 3
+    zIndex: 3,
+    left:12
   },
 
   whiteBox: {
@@ -299,7 +307,8 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 90,
     alignItems: "center",
-    zIndex: 2
+    zIndex: 2,
+    left:14,
   },
 
   foodTitle: {
@@ -331,7 +340,10 @@ const styles = StyleSheet.create({
 
   restaurantCard: {
     marginTop: 10,
-    paddingHorizontal: 20
+    paddingHorizontal: 20,
+    width:"100%" ,
+    justifyContent:"center",
+    alignItems:"center"
   },
 
   resTitle: {
@@ -346,7 +358,7 @@ const styles = StyleSheet.create({
 
   iconRow: {
     flexDirection: "row",
-    gap: 15,
+    gap: 30,
     marginTop: 8
   }
 

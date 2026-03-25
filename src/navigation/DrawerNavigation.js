@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
+import { View, StyleSheet, Text, TouchableOpacity, ScrollView } from "react-native";
 import {
   createDrawerNavigator,
 } from "@react-navigation/drawer";
@@ -50,7 +50,10 @@ const DrawerNavigation = () => {
           </View>
         </View>
 
-        <View style={{ marginTop: 25 }}>
+       <ScrollView
+       showsVerticalScrollIndicator={false}
+       >
+         <View style={{ marginTop: 25 }}>
 
           <TouchableOpacity
             style={styles.drawerRow}
@@ -106,6 +109,21 @@ const DrawerNavigation = () => {
 
         </View>
 
+         <View  style={{ marginTop: 25 }}>
+           <TouchableOpacity
+            style={styles.drawerRow}
+            onPress={() => props.navigation.navigate("ProviderScreen")}
+          >
+            <View style={styles.leftRow}>
+              <User width={40} height={40} />
+              <Text style={styles.label}>ProviderScreen</Text>
+            </View>
+
+            <Arrow width={18} height={18} />
+          </TouchableOpacity>
+
+        </View>
+
         <View  style={{ marginTop: 25 }}>
            <TouchableOpacity
             style={styles.drawerRow}
@@ -136,6 +154,7 @@ const DrawerNavigation = () => {
 
         </View>
 
+       </ScrollView>
 
       </View>
     );

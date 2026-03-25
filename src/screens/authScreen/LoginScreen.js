@@ -148,7 +148,7 @@ const LoginScreen = ({ navigation }) => {
 
             </View>
 
-            <View style={{ justifyContent: "center", alignItems: "center", marginTop: 40 }}>
+            <View style={{ justifyContent: "center", alignItems: "center", marginTop: 30 }}>
               <Text style={{ fontSize: 16, fontFamily: "Sen-Regular", lineHeight: "100%", color: "#7E8A97" }}>Or</Text>
             </View>
 
@@ -161,7 +161,6 @@ const LoginScreen = ({ navigation }) => {
                 justifyContent: "center",
                 padding: 10,
                 gap: 30,
-                marginTop: 5
               }}
             >
 
@@ -199,13 +198,13 @@ const styles = StyleSheet.create({
 
   titleContainer: {
     position: "absolute",
-    top: 118,
+    top: 70,
     left: 138
   },
 
   subtitleContainer: {
     position: "absolute",
-    top: 157,
+    top: 110,
     left: 42
   },
 
@@ -224,7 +223,7 @@ const styles = StyleSheet.create({
 
   cardContainer: {
     position: "absolute",
-    top: 230,
+    top: 100,
     width: "100%",
     alignItems: "center",
   },
@@ -232,7 +231,7 @@ const styles = StyleSheet.create({
   form: {
     position: "absolute",
     width: "100%",
-    top: 50,
+    top: 90,
     paddingHorizontal: 15
   },
 
@@ -242,7 +241,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
     marginBottom: 6,
     fontFamily: "Sen-Regular",
-    width: 75,
+    width: 70,
     height: 16
 
   },

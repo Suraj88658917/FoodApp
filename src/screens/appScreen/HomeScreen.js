@@ -251,7 +251,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    marginTop: 60
+    marginTop: 20
   },
 
   deliver: {

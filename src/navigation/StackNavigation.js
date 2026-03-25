@@ -32,6 +32,7 @@ import PaymentSuccessfully from "../screens/appScreen/PaymentSuccessfully.js";
 import TrackingOrder from "../screens/appScreen/TrackingOrder.js";
 import CallScreen from "../screens/appScreen/CallScreen.js";
 import MessageScreen  from "../screens/appScreen/MessageScreen.js";
+import ProviderScreen from "../screens/appScreen/ProviderScreen.js";
 
 
 const Stack = createNativeStackNavigator();
@@ -74,6 +75,8 @@ const StackNavigation = () => {
       <Stack.Screen name="TrackingOrder" component={TrackingOrder} />
       <Stack.Screen name="CallScreen" component={CallScreen} />
       <Stack.Screen name="MessageScreen" component={MessageScreen} />
+
+      <Stack.Screen name="ProviderScreen" component={ProviderScreen} />
 
 
       <Stack.Screen name="MainApp" component={DrawerNavigation} />

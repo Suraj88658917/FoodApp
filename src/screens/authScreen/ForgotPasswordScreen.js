@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
 
   backButton: {
     position: "absolute",
-    top: 60,
+    top: 20,
     left: 20,
     width: 42,
     height: 42,
@@ -104,19 +104,20 @@ const styles = StyleSheet.create({
 
   titleContainer: {
     position: "absolute",
-    top: 118,
+    top: 90,
     left: 70,
   },
 
   title: {
     color: "#ffffff",
-    fontSize: 30,
-    fontFamily: "Sen-Bold"
+    fontSize: 28,
+    fontFamily: "Sen-Bold",
+   
   },
 
   subtitleContainer: {
     position: "absolute",
-    top: 157,
+    top: 130,
     left: 42
   },
 
@@ -129,7 +130,7 @@ const styles = StyleSheet.create({
 
   cardContainer: {
     position: "absolute",
-    top: 230,
+    top: 130,
     width: "100%",
     alignItems: "center"
   },
@@ -137,7 +138,7 @@ const styles = StyleSheet.create({
   form: {
     position: "absolute",
     width: "100%",
-    top: 60,
+    top: 90,
     paddingHorizontal:15
   },
 

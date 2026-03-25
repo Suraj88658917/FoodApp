@@ -107,7 +107,7 @@ const VerificationScreen = ({ navigation }) => {
         </Text>
       </View>
 
-      <View  style={styles.subtitleContainer1}>
+      <View style={styles.subtitleContainer1}>
         <Text style={styles.subtitle1}>{email}</Text>
       </View>
       {/* Card */}
@@ -125,8 +125,10 @@ const VerificationScreen = ({ navigation }) => {
             {timer > 0 ? (
               <Text style={styles.timer}>Resend in {timer}s</Text>
             ) : (
-              <TouchableOpacity onPress={resendCode}>
-                <Text style={styles.resend}>Resend in .50sec</Text>
+              <TouchableOpacity onPress={resendCode}
+                style={{ flexDirection: "row" }}>
+                <Text style={styles.resend}>Resend</Text>
+                <Text style={styles.resend1}> in.50sec</Text>
               </TouchableOpacity>
             )}
 
@@ -178,7 +180,7 @@ const styles = StyleSheet.create({
 
   backButton: {
     position: "absolute",
-    top: 60,
+    top: 20,
     left: 20,
     width: 42,
     height: 42,
@@ -191,28 +193,28 @@ const styles = StyleSheet.create({
 
   titleContainer: {
     position: "absolute",
-    top: 118,
+    top: 90,
     left: 119,
   },
 
   title: {
     color: "#fff",
-    fontSize: 30,
+    fontSize: 28,
     fontFamily: "Sen-Bold"
   },
 
   subtitleContainer: {
     position: "absolute",
-    top: 159,
+    top: 120,
     left: 70
   },
   subtitleContainer1: {
     position: "absolute",
-    top: 187,
-    left: 109,
-    justifyContent:"center",
-    width:200,
-    alignItems:"center"
+    top: 150,
+    left: 80,
+    justifyContent: "center",
+    width: 250,
+    alignItems: "center"
   },
 
   subtitle: {
@@ -221,7 +223,7 @@ const styles = StyleSheet.create({
     fontFamily: "Sen-Regular",
     lineHeight: 26
   },
-   subtitle1: {
+  subtitle1: {
     color: "#ffffff",
     fontSize: 16,
     fontFamily: "Sen-Bold",
@@ -230,7 +232,7 @@ const styles = StyleSheet.create({
 
   cardContainer: {
     position: "absolute",
-    top: 230,
+    top: 120,
     width: "100%",
     alignItems: "center"
   },
@@ -238,8 +240,8 @@ const styles = StyleSheet.create({
   form: {
     position: "absolute",
     width: "100%",
-    top: 60,
-    paddingHorizontal:18
+    top: 90,
+    paddingHorizontal: 18
   },
 
   row: {
@@ -276,7 +278,13 @@ const styles = StyleSheet.create({
   },
 
   resend: {
+    textDecorationLine: "underline",
     color: "#000000",
+    fontSize: 14,
+    fontFamily: "Sen-Bold"
+  },
+  resend1: {
+    color: "#999",
     fontSize: 14,
     fontFamily: "Sen-Bold"
   },
@@ -288,8 +296,8 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     justifyContent: "center",
     alignItems: "center",
-    width:"100%"
-  
+    width: "100%"
+
   },
 
   buttonText: {

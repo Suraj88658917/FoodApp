@@ -80,7 +80,8 @@ const Onboarding = ({ navigation }) => {
 
     <View style={styles.container}>
 
-      <FlatList
+     <View>
+       <FlatList
         ref={flatListRef}
         data={data}
         horizontal
@@ -100,6 +101,7 @@ const Onboarding = ({ navigation }) => {
           </View>
         )}
       />
+     </View>
 
       <View style={styles.pagination}>
         {data.map((_, i) => (
@@ -159,13 +161,13 @@ const styles = StyleSheet.create({
   slide: {
     width,
     alignItems: "center",
-    marginTop: 119
+    marginTop: 70
   },
 
   image: {
-    width: 280,
-    height: 350,
-    marginBottom: 70,
+    width: 240,
+    height: 262,
+    marginBottom: 50,
     backgroundColor: "#98A8B8",
     borderRadius: 12,
   },
@@ -179,9 +181,9 @@ const styles = StyleSheet.create({
   },
 
   desc: {
-    fontSize: 18,
+    fontSize: 16,
     textAlign: "center",
-    color: "#32343E",
+    color: "#999",
     lineHeight: 20,
     fontFamily: "Sen-Regular",
   
@@ -192,7 +194,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     position: "absolute",
-    bottom: 240,
+    bottom: 200,
     width: "100%",
   },
 
@@ -211,35 +213,35 @@ const styles = StyleSheet.create({
 
   buttonContainer: {
     position: "absolute",
-    bottom: 60,
+    bottom: 30,
     alignItems: "center",
     width: "100%",
   },
 
   buttonContainer1: {
     position: "absolute",
-    bottom: 40,
+    bottom: 30,
     alignItems: "center",
     width: "100%",
   },
 
   skip: {
     fontSize: 16,
-    color: "#605b5b",
-    marginTop: 20,
+    color: "#999",
+    marginTop: 10,
     fontFamily: "Sen-Regular",
   },
 
   button: {
     backgroundColor: "#FF7622",
     paddingVertical: 20,
-    paddingHorizontal: 168,
+    paddingHorizontal: 150,
     borderRadius: 12,
   },
   button1: {
     backgroundColor: "#FF7622",
     paddingVertical: 20,
-    paddingHorizontal: 145,
+    paddingHorizontal: 128,
     borderRadius: 12,
   },
 

@@ -1,5 +1,15 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, KeyboardAvoidingView, Platform, ScrollView } from "react-native";
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  StyleSheet,
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView
+} from "react-native";
+
 import Card from "../../assets/image/WhiteBG.svg";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import Back from "../../assets/image/back.svg";
@@ -23,161 +33,156 @@ const RegisterScreen = ({ navigation }) => {
       return;
     }
 
-    // Save data in MMKV
-    storage.set("userName", name);
-    storage.set("userEmail", email);
-    storage.set("userPassword", password);
-    storage.set("isLoggedIn", true);
-
-    // Console logs
-    console.log("User Name:", storage.getString("userName"));
-    console.log("User Email:", storage.getString("userEmail"));
-    console.log("User Password:", storage.getString("userPassword"));
-    console.log("Login Status:", storage.getBoolean("isLoggedIn"));
-
     if (password !== confirmPassword) {
       alert("Passwords do not match");
       return;
     }
 
-    alert("Account Created Successfully");
+    // Save in MMKV
+    storage.set("userName", name);
+    storage.set("userEmail", email);
+    storage.set("userPassword", password);
+    storage.set("isLoggedIn", true);
 
+    alert("Account Created Successfully");
     navigation.replace("LocationScreen");
   };
 
   return (
-
     <KeyboardAvoidingView
       style={styles.container}
       behavior={Platform.OS === "ios" ? "padding" : "height"}
     >
+
       <ScrollView
         contentContainerStyle={{ flexGrow: 1 }}
         keyboardShouldPersistTaps="handled"
+        showsVerticalScrollIndicator={false}
       >
 
-      <TouchableOpacity
-        style={styles.backButton}
-        onPress={() => navigation.goBack()}
-      >
-        <Back width={18} height={18} />
-      </TouchableOpacity>
+        {/* Back Button */}
+        <TouchableOpacity
+          style={styles.backButton}
+          onPress={() => navigation.goBack()}
+        >
+          <Back width={18} height={18} />
+        </TouchableOpacity>
 
-      <View style={styles.titleContainer}>
-        <Text style={styles.title}>Sign up</Text>
-      </View>
+        {/* Title */}
+        <View style={styles.titleContainer}>
+          <Text style={styles.title}>Sign up</Text>
+        </View>
 
-      <View style={styles.subtitleContainer}>
-        <Text style={styles.subtitle}>
-          Please sign up to get started
-        </Text>
-      </View>
+        {/* Subtitle */}
+        <View style={styles.subtitleContainer}>
+          <Text style={styles.subtitle}>
+            Please sign up to get started
+          </Text>
+        </View>
 
-      <View style={styles.cardContainer}>
+        {/* Card */}
+        <View style={styles.cardContainer}>
 
-        <Card width={"100%"} height={730} />
+          <Card width={"100%"} height={730} />
 
-        <View style={styles.form}>
+          <View style={styles.form}>
 
-          <Text style={styles.label}>NAME</Text>
-
-         <View>
-           <TextInput
-            placeholder="Enter your name"
-            placeholderTextColor="#7E8A97"
-            value={name}
-            onChangeText={setName}
-            style={styles.input}
-          />
-         </View>
-
-          <Text style={styles.label}>EMAIL</Text>
-
-         <View>
-           <TextInput
-            placeholder="example@gmail.com"
-            placeholderTextColor="#7E8A97"
-            value={email}
-            onChangeText={setEmail}
-            style={styles.input}
-            keyboardType="email-address"
-            autoCapitalize="none"
-          />
-         </View>
-
-          <Text style={styles.label}>PASSWORD</Text>
-
-          <View style={styles.passwordContainer}>
+            <Text style={styles.label}>NAME</Text>
 
             <TextInput
-              placeholder="*  *  *  *  *  *  *  *"
+              placeholder="Enter your name"
               placeholderTextColor="#7E8A97"
-              value={password}
-              onChangeText={setPassword}
-              secureTextEntry={!showPassword}
-              style={styles.passwordInput}
+              value={name}
+              onChangeText={setName}
+              style={styles.input}
             />
 
-            <TouchableOpacity
-              onPress={() => setShowPassword(!showPassword)}
-              style={styles.eyeIcon}
-            >
-              <Ionicons
-                name={showPassword ? "eye" : "eye-off"}
-                size={22}
-                color="#777"
-              />
-            </TouchableOpacity>
-
-          </View>
-
-          <Text style={styles.label}>CONFIRM PASSWORD</Text>
-
-          <View style={styles.passwordContainer}>
+            <Text style={styles.label}>EMAIL</Text>
 
             <TextInput
-              placeholder="*  *  *  *  *  *  *  *"
+              placeholder="example@gmail.com"
               placeholderTextColor="#7E8A97"
-              value={confirmPassword}
-              onChangeText={setConfirmPassword}
-              secureTextEntry={!showConfirmPassword}
-              style={styles.passwordInput}
+              value={email}
+              onChangeText={setEmail}
+              style={styles.input}
+              keyboardType="email-address"
+              autoCapitalize="none"
             />
 
-            <TouchableOpacity
-              onPress={() => setShowConfirmPassword(!showConfirmPassword)}
-              style={styles.eyeIcon}
-            >
-              <Ionicons
-                name={showConfirmPassword ? "eye" : "eye-off"}
-                size={22}
-                color="#777"
+            <Text style={styles.label}>PASSWORD</Text>
+
+            <View style={styles.passwordContainer}>
+
+              <TextInput
+                placeholder="*  *  *  *  *  *  *  *"
+                placeholderTextColor="#7E8A97"
+                value={password}
+                onChangeText={setPassword}
+                secureTextEntry={!showPassword}
+                style={styles.passwordInput}
               />
+
+              <TouchableOpacity
+                onPress={() => setShowPassword(!showPassword)}
+                style={styles.eyeIcon}
+              >
+                <Ionicons
+                  name={showPassword ? "eye" : "eye-off"}
+                  size={22}
+                  color="#777"
+                />
+              </TouchableOpacity>
+
+            </View>
+
+            <Text style={styles.label}>CONFIRM PASSWORD</Text>
+
+            <View style={styles.passwordContainer}>
+
+              <TextInput
+                placeholder="*  *  *  *  *  *  *  *"
+                placeholderTextColor="#7E8A97"
+                value={confirmPassword}
+                onChangeText={setConfirmPassword}
+                secureTextEntry={!showConfirmPassword}
+                style={styles.passwordInput}
+              />
+
+              <TouchableOpacity
+                onPress={() => setShowConfirmPassword(!showConfirmPassword)}
+                style={styles.eyeIcon}
+              >
+                <Ionicons
+                  name={showConfirmPassword ? "eye" : "eye-off"}
+                  size={22}
+                  color="#777"
+                />
+              </TouchableOpacity>
+
+            </View>
+
+            <TouchableOpacity
+              style={styles.button}
+              onPress={handleSignup}
+            >
+              <Text style={styles.buttonText}>SIGN UP</Text>
             </TouchableOpacity>
 
-          </View>
+            <View style={styles.signupRow}>
+              <Text style={styles.accountText}>Already have an account?</Text>
 
-          <TouchableOpacity
-            style={styles.button}
-            onPress={handleSignup}
-          >
-            <Text style={styles.buttonText}>SIGN UP</Text>
-          </TouchableOpacity>
+              <TouchableOpacity onPress={() => navigation.navigate("LoginScreen")}>
+                <Text style={styles.accountText1}>Login</Text>
+              </TouchableOpacity>
+            </View>
 
-          <View style={styles.signupRow}>
-            <Text style={styles.accountText}>Already have an account?</Text>
-
-            <TouchableOpacity onPress={() => navigation.navigate("LoginScreen")}>
-              <Text style={styles.accountText1}>Login</Text>
-            </TouchableOpacity>
           </View>
 
         </View>
 
-      </View>
-    </ScrollView>
-      </KeyboardAvoidingView >
-    
+      </ScrollView>
+
+    </KeyboardAvoidingView>
   );
 };
 
@@ -192,7 +197,7 @@ const styles = StyleSheet.create({
 
   backButton: {
     position: "absolute",
-    top: 60,
+    top: 20,
     left: 20,
     width: 42,
     height: 42,
@@ -205,13 +210,13 @@ const styles = StyleSheet.create({
 
   titleContainer: {
     position: "absolute",
-    top: 118,
+    top: 80,
     left: 138
   },
 
   subtitleContainer: {
     position: "absolute",
-    top: 157,
+    top: 120,
     left: 82
   },
 
@@ -230,7 +235,7 @@ const styles = StyleSheet.create({
 
   cardContainer: {
     position: "absolute",
-    top: 230,
+    top: 90,
     width: "100%",
     alignItems: "center"
   },
@@ -238,7 +243,7 @@ const styles = StyleSheet.create({
   form: {
     position: "absolute",
     width: "100%",
-    top: 60,
+    top: 80,
     paddingHorizontal: 15
   },
 
